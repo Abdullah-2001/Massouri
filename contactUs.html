@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Premium Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0d1b2a;
+            --gold: #c8a84b;
+            --gold-light: #e2c36e;
+            --white: #ffffff;
+            --off-white: #f7f7f5;
+            --light-gray: #ececec;
+            --mid-gray: #888;
+            --text: #1a1a2e;
+            --purple-accent: #d9d4f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.2px;
+            color: #0A1634;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header Banner --- */
+        .header-section {
+            background: linear-gradient(rgba(10, 22, 52, 0.85), rgba(10, 22, 52, 0.95)),
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-blue);
+        }
+
+        .header-section h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto 100px;
+            display: flex;
+            background: var(--white);
+            border-radius: 25px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: var(--brand-navy);
+            padding: 50px 40px;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .office-pic {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            transition: 0.3s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        /* --- Updated Icon Style: No background, White border --- */
+        .info-card i {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            /* Removed sky blue background */
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-size: 1rem;
+            border: 1px solid var(--white);
+            /* Added white border */
+        }
+
+        /* --- Form Section --- */
+        .contact-form {
+            flex: 1.5;
+            padding: 50px 60px;
+        }
+
+        .contact-form h2 {
+            color: #0A1634;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .input-box input,
+        .input-box textarea {
+            width: 100%;
+            padding: 16px;
+            background: #f8fafc;
+            border: 2px solid #edf2f7;
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: 0.3s ease;
+        }
+
+        .input-box input:focus,
+        .input-box textarea:focus {
+            border-color: var(--brand-navy);
+            background: #fff;
+            outline: none;
+        }
+
+        .btn-send {
+            background: #0A1634;
+            color: white;
+            border: none;
+            padding: 18px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s ease;
+        }
+
+        .btn-send:hover {
+            background: var(--navy-deep);
+            box-shadow: 0 10px 20px rgba(10, 22, 52, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ── NAV ── */
+        .hamburger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        nav {
+            font-family: Arial, Helvetica, sans-serif !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 48px;
+            height: 64px;
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, .06);
+        }
+
+        .language-dropdown select {
+            border: 1px solid #d6d6d6;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #111;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .language-dropdown select:hover {
+            border-color: #081a44;
+        }
+
+        .language-dropdown select:focus {
+            border-color: #081a44;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: .04em;
+            color: var(--navy);
+        }
+
+        .nav-logo span {
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 28px;
+            list-style: none;
+            width: 100%;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 13.5px;
+            color: #333;
+            font-weight: 800;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: #0b245fe8;
+            ;
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: background .2s;
+        }
+
+        .nav-cta:hover {
+            background: #1a2e46;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 18px;
+                padding: 20px;
+                display: none;
+                /* hidden by default */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* =========================================
+   NEWSLETTER
+========================================= */
+
+.newsletter {
+    background: #0A1634;
+    padding: 42px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.newsletter-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+.newsletter-text h3 {
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.newsletter-text p {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 420px;
+}
+
+.newsletter-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 320px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 180px;
+    padding: 15px 18px;
+    border: 1.5px solid rgba(255,255,255,0.16);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: white;
+    outline: none;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255,255,255,0.45);
+}
+
+.newsletter-form button {
+    padding: 15px 26px;
+    border: none;
+    border-radius: 12px;
+    background: #1f4ed8;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.newsletter-form button:hover {
+    background: #2563eb;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: #0A1634;
+    overflow: hidden;
+}
+
+.footer-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 40px 50px;
+    display: grid;
+    grid-template-columns: 280px 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.footer-logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-mark {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 14px;
+}
+
+.footer-col ul li a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    transition: 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #fff;
+}
+
+.footer-socials-col h5 {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.social-icons a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.75);
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: rgba(255,255,255,0.16);
+    color: white;
+}
+
+.footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom span {
+    color: rgba(255,255,255,0.45);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    transition: 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: white;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+
+    .newsletter {
+        padding: 40px 40px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .newsletter-form {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .newsletter {
+        padding: 36px 22px;
+        gap: 24px;
+    }
+
+    .newsletter-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .newsletter-text p {
+        font-size: 0.88rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+        min-width: 100%;
+        gap: 14px;
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+    }
+
+    .newsletter-form button {
+        padding: 15px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        padding: 50px 22px 40px;
+        gap: 42px;
+    }
+
+    .footer-logo-wrap {
+        align-items: flex-start;
+    }
+
+    .footer-logo-mark {
+        width: 180px;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+        font-size: 14px;
+    }
+
+    .footer-socials-col h5 {
+        margin-bottom: 16px;
+    }
+
+    .social-icons {
+        gap: 12px;
+    }
+
+    .social-icons a {
+        width: 38px;
+        height: 38px;
+    }
+
+    .footer-bottom {
+        padding: 22px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-bottom-links {
+        gap: 16px;
+    }
+
+    .footer-bottom span,
+    .footer-bottom-links a {
+        font-size: 13px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .newsletter {
+        padding: 32px 16px;
+    }
+
+    .footer-main {
+        padding: 42px 16px 32px;
+    }
+
+    .footer-bottom {
+        padding: 18px 16px;
+    }
+
+    .footer-logo-mark {
+        width: 150px;
+    }
+
+    .social-icons a {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+        @media (max-width: 900px) {
+
+            .about,
+            .solutions-grid,
+            .perf-grid,
+            .why-grid,
+            .faq-inner,
+            .contact-inner,
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero,
+            .global,
+            .solutions,
+            .performance,
+            .why,
+            .faq,
+            .contact {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            footer {
+                padding: 40px 24px 20px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin: 30px 20px;
+            }
+
+            .contact-form {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="./asset/logo.png" alt="Massouri Investments">
+        </div>
+
+        <!-- Hamburger -->
+        <div class="hamburger" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <!-- Nav Links -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="global.html">Global Presence</a></li>
+            <li><a href="contactUs.html">Contact Us</a></li>
+
+            <li class="language-dropdown">
+                <select>
+                    <option value="en">EN</option>
+                    <option value="ar">AR</option>
+                    <option value="fr">FR</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+
+    <header class="header-section">
+        <h1>Connect With Us</h1>
+        <p style="opacity: 0.9;">Drop us a line and let's build something great together.</p>
+    </header>
+
+    <main class="container">
+        <aside class="contact-info">
+            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600"
+                class="office-pic" alt="Office">
+
+            <h2 style="margin-bottom: 25px;">Contact Details</h2>
+
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <p
+                        style="margin:0; font-size: 0.7rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px;">
+                        Location</p>
+                    <p style="margin:0; font-weight: 600;">Global Headquarters</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-globe-asia"></i>
+                <div>
+                    <p
+                        style="margin:0; font-size: 0.7rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px;">
+                        Region</p>
+                    <p style="margin:0; font-weight: 600;">Erbil, Kurdistan</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <p
+                        style="margin:0; font-size: 0.7rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px;">
+                        Email</p>
+                    <p style="margin:0; font-weight: 600;">contact@massouriinvestments.com</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <p
+                        style="margin:0; font-size: 0.7rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px;">
+                        Phone</p>
+                    <p style="margin:0; font-weight: 600;">+44 123 654 7890</p>
+                </div>
+            </div>
+        </aside>
+
+        <section class="contact-form">
+            <h2>Send a Message</h2>
+            <p style="color: #666; margin-bottom: 30px;">We're ready to hear about your next big project.</p>
+
+            <form>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="input-box"><input type="text" placeholder="Name" required></div>
+                    <div class="input-box"><input type="email" placeholder="email@example.com" required></div>
+                </div>
+                <div class="input-box"><input type="text" placeholder="Subject"></div>
+                <div class="input-box"><textarea rows="5" placeholder="Your Message..."></textarea></div>
+                <button type="submit" class="btn-send">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </section>
+    </main>
+
+        <!-- FOOTER -->
+    <div class="newsletter">
+        <div class="newsletter-text">
+            <h3>Newsletter Subscription</h3>
+            <p>Sign up for free newsletters &amp; get more of Massouri Investments delivered to you.</p>
+        </div>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email to get the latest news...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-bottom"></div>
+
+        <div class="footer-main">
+
+            <!-- Brand -->
+
+            <div class="footer-logo-wrap">
+                <img class="footer-logo-mark" src="./asset/white-logo.png" alt="Massouri Investments">
+            </div>
+            <!-- Company -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Global Presences</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Collaborate -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Join Us -->
+            <div class="footer-socials-col">
+                <h5>Join Us</h5>
+                <div class="social-icons">
+                    <a href="#" title="YouTube">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.5 6.3a3 3 0 0 0-2.1-2.1C19.5 3.8 12 3.8 12 3.8s-7.5 0-9.4.4A3 3 0 0 0 .5 6.3 31 31 0 0 0 .1 12a31 31 0 0 0 .4 5.7 3 3 0 0 0 2.1 2.1c1.9.4 9.4.4 9.4.4s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.9 12a31 31 0 0 0-.4-5.7zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z" />
+                        </svg>
+                    </a>
+                    <a href="#" title="Facebook">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="#" title="X / Twitter">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Massouri Investments. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Terms &amp; Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+                function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
+
+</body>
+
+</html>

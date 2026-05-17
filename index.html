@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massouri Investments – Strategic. Global. Long-Term.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0d1b2a;
+            --gold: #c8a84b;
+            --gold-light: #e2c36e;
+            --white: #ffffff;
+            --off-white: #f7f7f5;
+            --light-gray: #ececec;
+            --mid-gray: #888;
+            --text: #1a1a2e;
+            --purple-accent: #d9d4f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.2px;
+            color: #0A1634;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        nav {
+            font-family: Arial, Helvetica, sans-serif !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 48px;
+            height: 64px;
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, .06);
+        }
+
+        .language-dropdown select {
+            border: 1px solid #d6d6d6;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #111;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .language-dropdown select:hover {
+            border-color: #081a44;
+        }
+
+        .language-dropdown select:focus {
+            border-color: #081a44;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: .04em;
+            color: var(--navy);
+        }
+
+        .nav-logo span {
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 28px;
+            list-style: none;
+            width: 100%;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 13.5px;
+            color: #333;
+            font-weight: 800;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: #0b245fe8;
+            ;
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: background .2s;
+        }
+
+        .nav-cta:hover {
+            background: #1a2e46;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 18px;
+                padding: 20px;
+                display: none;
+                /* hidden by default */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            /* KEY: content moves to right side */
+            padding: 80px;
+            overflow: hidden;
+            background: url('./asset/image7.png') center/cover no-repeat;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(200,168,75,.08)'/%3E%3C/svg%3E");
+            opacity: .6;
+            pointer-events: none;
+        }
+
+        .hero-img-overlay {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 42%;
+            background: linear-gradient(to right, var(--navy), transparent 20%),
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80') center/cover no-repeat;
+            opacity: .45;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 50px);
+            line-height: 1.05;
+            color: #0A1634;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            max-width: 420px;
+            margin-bottom: 32px;
+        }
+
+        .hero-btn {
+            background: #081a44;
+            color: white;
+            border: none;
+            padding: 14px 34px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .hero-btn:hover {
+            background: #12285f;
+        }
+
+        .hero-content {
+            max-width: 620px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            color: #0A1634;
+            font-size: clamp(42px, 5vw, 60px);
+            line-height: 1.12;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 span {
+            color: #0A1634;
+            display: block;
+        }
+
+        .hero-content p {
+            color: rgba(6, 6, 6, 0.72);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 440px;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 13px 26px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 13.5px;
+            cursor: pointer;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            transition: background .2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+        }
+
+        .hero-stat {
+            color: rgba(255, 255, 255, .55);
+            font-size: 12.5px;
+            margin-top: 28px;
+        }
+
+        .hero-stat strong {
+            color: var(--gold);
+            font-size: 18px;
+            display: block;
+        }
+
+        /* ── LOGOS STRIP ── */
+        .logos-strip {
+            background: var(--navy);
+            padding: 18px 60px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .logos-strip span {
+            color: rgba(255, 255, 255, .55);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .logos-strip span.highlight {
+            color: var(--gold);
+        }
+
+        /* ── ABOUT ── */
+        /* =========================
+   ABOUT SECTION
+========================= */
+
+        .about-wrapper {
+            background: #faf8f4;
+            padding: 120px 70px;
+        }
+
+        .about {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 560px;
+            gap: 90px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: clamp(52px, 6vw, 78px);
+            line-height: 0.95;
+            font-weight: 600;
+            color: #0A1634;
+            margin-bottom: 34px;
+            letter-spacing: -1.5px;
+        }
+
+        .about-text p {
+            max-width: 500px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 22px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .about-btns {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .about-primary {
+            background: #081a44;
+            color: #fff;
+            border: none;
+            padding: 16px 34px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .about-primary:hover {
+            background: #10265f;
+        }
+
+        .about-secondary {
+            background: transparent;
+            border: 1.5px solid #c7c7c7;
+            color: #111827;
+            padding: 16px 34px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .about-secondary:hover {
+            border-color: #081a44;
+            color: #081a44;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 720px;
+            object-fit: cover;
+            border-radius: 38px;
+            display: block;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.08),
+                0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        /* =========================
+   STATS SECTION
+========================= */
+
+        .stats {
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 40px 70px;
+            border-top: 1px solid #f1f1f1;
+            border-bottom: 1px solid #f1f1f1;
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 10%;
+            width: 1px;
+            height: 80%;
+            background: #ececec;
+        }
+
+        .stat-item .value {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(54px, 6vw, 88px);
+            font-weight: 800;
+            line-height: 1;
+            color: #081a44;
+            margin-bottom: 14px;
+            letter-spacing: -2px;
+        }
+
+        .stat-item .label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+            letter-spacing: 0.2px;
+        }
+
+        /* =========================
+   RESPONSIVE
+========================= */
+
+        @media (max-width: 1100px) {
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .about-image img {
+                height: 620px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .stat-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .about-wrapper {
+                padding: 80px 30px;
+            }
+
+            .stats {
+                padding: 70px 30px;
+            }
+
+            .about-text h2 {
+                font-size: 54px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .about-wrapper {
+                padding: 70px 22px;
+            }
+
+            .about-text h2 {
+                font-size: 42px;
+                line-height: 1.05;
+            }
+
+            .about-text p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .about-btns {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .about-primary,
+            .about-secondary {
+                width: 100%;
+            }
+
+            .about-image img {
+                height: 480px;
+                border-radius: 24px;
+            }
+
+            .stats {
+                padding: 60px 22px;
+            }
+
+            .stat-item .value {
+                font-size: 58px;
+            }
+
+            .stat-item .label {
+                font-size: 15px;
+            }
+        }
+
+        /* ── GLOBAL PRESENCE ── */
+        .global {
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .section-title-global {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .section-title2 {
+            text-align: center;
+            font-size: 70px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .title-line {
+            width: 70px;
+            height: 3px;
+            background: #1d3565;
+            margin: 18px auto;
+        }
+
+
+        .section-sub {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .section-sub2 {
+            text-align: center;
+            max-width: 423px;
+            margin: auto;
+            font-size: 21px;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        .world-map {
+
+            border-radius: 10px;
+            border: 5px solid var(--light-gray);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .world-map svg {
+            width: 100%;
+            max-width: 900px;
+            opacity: .8;
+        }
+
+        .map-stat {
+            position: absolute;
+            color: #fff;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .map-stat h3 {
+            font-size: 28px;
+            color: #c8a84b;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .map-stat span {
+            font-size: 13px;
+            opacity: .8;
+        }
+
+        /* Positioning */
+        .stat-1 {
+            top: 18%;
+            left: 16%;
+        }
+
+        .stat-2 {
+            top: 14%;
+            left: 48%;
+        }
+
+        .stat-3 {
+            top: 22%;
+            left: 73%;
+        }
+
+        .stat-4 {
+            top: 68%;
+            left: 78%;
+        }
+
+        .map-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 0 4px rgba(200, 168, 75, .35);
+            animation: pulse 2s infinite;
+        }
+
+        .why-section {
+            padding: 70px 0 90px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 4px rgba(200, 168, 75, .35);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(200, 168, 75, .1);
+            }
+        }
+
+        .map-dot:nth-child(1) {
+            top: 38%;
+            left: 48%;
+        }
+
+        .map-dot:nth-child(2) {
+            top: 42%;
+            left: 28%;
+        }
+
+        .map-dot:nth-child(3) {
+            top: 35%;
+            left: 55%;
+        }
+
+        .map-dot:nth-child(4) {
+            top: 55%;
+            left: 62%;
+        }
+
+        .map-dot:nth-child(5) {
+            top: 30%;
+            left: 72%;
+        }
+
+        /* ── SOLUTIONS ── */
+        .solutions {
+            padding: 70px 0;
+            background: var(--off-white);
+        }
+
+        .solutions .section-title {
+            margin-bottom: 6px;
+        }
+
+        .solutions .section-sub {
+            margin-bottom: 50px;
+        }
+
+        .solutions-grid {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .sol-card {
+            background: #fff;
+            width: 390px;
+            border: 1px solid #0A1634;
+            padding: 42px 35px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: 0.3s ease;
+        }
+
+        .sol-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .1);
+            transform: translateY(-3px);
+        }
+
+        .sol-icon {
+            color: #0A1634;
+            margin-bottom: 25px;
+        }
+
+        .sol-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            color: #0A1634;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .card-line {
+            width: 60px;
+            height: 3px;
+            background: #22386c;
+            margin: 25px 0;
+        }
+
+        .sol-card p {
+            font-size: 23px;
+            line-height: normal;
+            color: #0A1634;
+            margin-bottom: 35px;
+        }
+
+        .sol-min {
+            font-size: 11.5px;
+            color: var(--mid-gray);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 4px;
+        }
+
+        .sol-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .btn-sm {
+            border: 1.5px solid #0A1634;
+            color: #0A1634;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+            transition: all .2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-sm:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* =========================
+   PERFORMANCE SECTION
+========================= */
+
+        .performance {
+            background: #04133b;
+            padding: 95px 90px 120px;
+            overflow: hidden;
+        }
+
+        .performance-container {
+            max-width: 1380px;
+            margin: 0 auto;
+        }
+
+        .performance .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(72px, 7vw, 64px);
+            line-height: 0.92;
+            font-weight: 600;
+            color: #f3f1ec;
+            margin-bottom: 26px;
+            letter-spacing: -3px;
+        }
+
+        .performance .section-sub {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 18px;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 620px;
+            margin-bottom: 72px;
+            font-weight: 400;
+        }
+
+        /* =========================
+   GRID
+========================= */
+
+        .perf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 2px solid rgba(255, 255, 255, 0.75);
+        }
+
+        .perf-card {
+            padding: 66px 44px 34px;
+            min-height: 430px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 2px solid rgba(255, 255, 255, 0.75);
+        }
+
+        .perf-card:last-child {
+            border-right: none;
+        }
+
+        /* =========================
+   ICON
+========================= */
+
+        .perf-card .icon-box {
+            width: 76px;
+            height: 76px;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 54px;
+        }
+
+        .perf-card .icon-box svg {
+            width: 32px;
+            height: 32px;
+            stroke: rgba(255, 255, 255, 0.92);
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        /* =========================
+   METRIC
+========================= */
+
+        .perf-card .metric {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(72px, 6vw, 92px);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -4px;
+            color: #c8c5bf;
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+   LABEL
+========================= */
+
+        .perf-card .metric-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 22px;
+            line-height: 1.1;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #f4f4f4;
+            max-width: 280px;
+            margin-bottom: auto;
+        }
+
+        /* =========================
+   DESC
+========================= */
+
+        .perf-card .metric-desc {
+            margin-top: 80px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.4;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0;
+            font-weight: 500;
+        }
+
+        /* =========================
+   RESPONSIVE
+========================= */
+
+        @media (max-width: 1100px) {
+
+            .performance {
+                padding: 80px 40px 100px;
+            }
+
+            .perf-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .perf-card {
+                border-right: none;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+                min-height: auto;
+                padding: 50px 34px;
+            }
+
+            .perf-card:last-child {
+                border-bottom: none;
+            }
+
+            .performance .section-title {
+                font-size: 72px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .performance {
+                padding: 70px 22px 90px;
+            }
+
+            .performance .section-title {
+                font-size: 54px;
+                letter-spacing: -2px;
+            }
+
+            .performance .section-sub {
+                font-size: 16px;
+                margin-bottom: 50px;
+            }
+
+            .perf-card {
+                padding: 42px 24px;
+            }
+
+            .perf-card .metric {
+                font-size: 64px;
+            }
+
+            .perf-card .metric-label {
+                font-size: 18px;
+            }
+
+            .perf-card .metric-desc {
+                margin-top: 60px;
+                font-size: 13px;
+            }
+
+            .perf-card .icon-box {
+                width: 64px;
+                height: 64px;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* ── WHY ── */
+        .why-section {
+            padding: 70px 0 90px;
+        }
+
+        .why-title {
+            font-size: 54px;
+            margin-bottom: 0px;
+            font-weight: 800;
+        }
+
+        .why-sub {
+            font-size: 20px;
+            color: #131313ad;
+            margin-bottom: 70px;
+            font-weight: 600;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            text-align: center;
+        }
+
+        .why-item {
+            max-width: 320px;
+            margin: auto;
+        }
+
+        .why-icon {
+            width: 90px;
+            height: 90px;
+            border: 5px solid #111;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .why-item h4 {
+            font-size: 28px;
+            margin-bottom: 0px;
+            font-weight: 800;
+        }
+
+        .why-item p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        /* ── FAQ ── */
+        .faq {
+            padding: 80px 60px;
+            background: var(--off-white);
+        }
+
+        .faq-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: start;
+        }
+
+        .faq-left h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .faq-left p {
+            color: #555;
+            font-size: 14.5px;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .faq-item {
+            border-top: 1px solid #ddd;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .faq-q .icon {
+            font-size: 18px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .faq-a {
+            font-size: 13.5px;
+            color: #666;
+            line-height: 1.75;
+            padding-bottom: 16px;
+            display: none;
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        .faq-item.open .faq-q .icon {
+            transform: rotate(45deg);
+        }
+
+        #contact {
+            background: var(--off-white);
+            padding: 80px 40px;
+        }
+
+        /* ── CONTACT ── */
+        .contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        /* Left */
+        .contact-left h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .contact-left p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 10px;
+            max-width: 340px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-info-item:hover {
+            color: darkblue;
+        }
+
+        .contact-info-item .ci-icon {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info-item .ci-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-top: 2px;
+        }
+
+        /* Right – Form */
+        .contact-form-wrap {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px 32px 28px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .ssl-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ssl-badge svg {
+            color: #3aaa70;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: none;
+            /* hidden like image — placeholder only */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #0A1634;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            background: var(--input-bg);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+
+        }
+
+
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #0A1634;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            background: var(--input-bg);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #a0a8be;
+            font-weight: 400;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--navy);
+            box-shadow: 0 0 0 3px rgba(13, 27, 53, 0.07);
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 110px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: #0A1634;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-submit:hover {
+            background: #0d1c42;
+            transform: translateY(-1px);
+        }
+
+        /* =========================================
+   NEWSLETTER
+========================================= */
+
+        .newsletter {
+            background: #0A1634;
+            padding: 42px 120px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .newsletter-text h3 {
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-text p {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 420px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            justify-content: flex-end;
+            min-width: 320px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 18px;
+            border: 1.5px solid rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            outline: none;
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .newsletter-form button {
+            padding: 15px 26px;
+            border: none;
+            border-radius: 12px;
+            background: #1f4ed8;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: #2563eb;
+        }
+
+        /* =========================================
+   FOOTER
+========================================= */
+
+        footer {
+            background: #0A1634;
+            overflow: hidden;
+        }
+
+        .footer-main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 40px 50px;
+            display: grid;
+            grid-template-columns: 280px 1fr 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .footer-logo-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo-mark {
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            transition: 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-socials-col h5 {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .social-icons a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.75);
+            transition: 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: rgba(255, 255, 255, 0.16);
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom span {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            transition: 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+
+            .newsletter {
+                padding: 40px 40px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .newsletter-form {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .newsletter {
+                padding: 36px 22px;
+                gap: 24px;
+            }
+
+            .newsletter-text h3 {
+                font-size: 1.1rem;
+            }
+
+            .newsletter-text p {
+                font-size: 0.88rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                align-items: stretch;
+                min-width: 100%;
+                gap: 14px;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .newsletter-form button {
+                padding: 15px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                padding: 50px 22px 40px;
+                gap: 42px;
+            }
+
+            .footer-logo-wrap {
+                align-items: flex-start;
+            }
+
+            .footer-logo-mark {
+                width: 180px;
+            }
+
+            .footer-col ul li {
+                margin-bottom: 12px;
+            }
+
+            .footer-col ul li a {
+                font-size: 14px;
+            }
+
+            .footer-socials-col h5 {
+                margin-bottom: 16px;
+            }
+
+            .social-icons {
+                gap: 12px;
+            }
+
+            .social-icons a {
+                width: 38px;
+                height: 38px;
+            }
+
+            .footer-bottom {
+                padding: 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-bottom-links {
+                gap: 16px;
+            }
+
+            .footer-bottom span,
+            .footer-bottom-links a {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .newsletter {
+                padding: 32px 16px;
+            }
+
+            .footer-main {
+                padding: 42px 16px 32px;
+            }
+
+            .footer-bottom {
+                padding: 18px 16px;
+            }
+
+            .footer-logo-mark {
+                width: 150px;
+            }
+
+            .social-icons a {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .about,
+            .solutions-grid,
+            .perf-grid,
+            .why-grid,
+            .faq-inner,
+            .contact-inner,
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero,
+            .global,
+            .solutions,
+            .performance,
+            .why,
+            .faq,
+            .contact {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            footer {
+                padding: 40px 24px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="./asset/logo.png" alt="Massouri Investments">
+        </div>
+
+        <!-- Hamburger -->
+        <div class="hamburger" onclick="toggleMenu()">
+            ☰
+        </div>
+
+        <!-- Nav Links -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="global.html">Global Presence</a></li>
+            <li><a href="contactUs.html">Contact Us</a></li>
+
+            <li class="language-dropdown">
+                <select>
+                    <option value="en">EN</option>
+                    <option value="ar">AR</option>
+                    <option value="fr">FR</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Smart Investment.
+                <span>STRONGER FUTURE.</span>
+                Sustainable Growth.
+            </h1>
+
+            <p>
+                Massouri Investments connects investors to global
+                opportunities in Foreign Exchange and Commodities
+                markets through disciplined strategies, market insight,
+                and long term value creation.
+            </p>
+
+            <button class="hero-btn">Contact Us</button>
+        </div>
+    </section>
+
+    <!-- LOGOS STRIP -->
+    <!-- <div class="logos-strip">
+        <span>INVEST</span>
+        <span class="highlight">✦ FINTECH</span>
+        <span>VX VORTEX CAPITAL LLC</span>
+        <span class="highlight">🔗 Lendly</span>
+        <span>MYRAID</span>
+    </div> -->
+
+    <!-- ABOUT -->
+    <section class="about-wrapper">
+        <div class="about">
+
+            <div class="about-text">
+                <h2>
+                    About Massouri
+                    Investments
+                </h2>
+
+                <p>
+                    Massouri Investments is focused on Foreign Exchange and Commodities markets, helping investors grow
+                    assets through market insight, strategic planning, and controlled risk management.
+
+                </p>
+
+                <p>
+                    We combine global market access with smart investment strategies designed for long term value and
+                    sustainable growth.
+                </p>
+
+                <div class="about-btns">
+                    <button class="about-primary">Learn More</button>
+                    <button class="about-secondary">Contact Us</button>
+                </div>
+            </div>
+
+            <div class="about-image">
+                <img src="./asset/about.png" alt="">
+            </div>
+
+        </div>
+    </section>
+
+    <div class="stats">
+
+        <div class="stat-item">
+            <div class="value counter" data-target="5.2" data-suffix="M">
+                0
+            </div>
+            <div class="label">Trades Have Done</div>
+        </div>
+
+        <div class="stat-item">
+            <div class="value counter" data-target="7" data-suffix="+">
+                0
+            </div>
+            <div class="label">Years Experience</div>
+        </div>
+
+        <div class="stat-item">
+            <div class="value counter" data-target="40" data-suffix="+">
+                0
+            </div>
+            <div class="label">Global Market Presence</div>
+        </div>
+
+    </div>
+
+    <section class="performance">
+        <div style="max-width:1200px; margin:0 auto;">
+            <h2 class="section-title">Performance</h2>
+            <p class="section-sub">Track record built over 15 years across full market cycles, bull markets,
+                corrections, and black swan events.</p>
+
+            <div class="perf-grid">
+
+                <!-- Card 1 -->
+                <div class="perf-card">
+                    <div class="icon-box">
+                        <!-- Trending Up / Performance -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="28" height="28">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21H3" />
+                        </svg>
+                    </div>
+                    <div class="metric">23.4%</div>
+                    <div class="metric-label">Average Annualized Return</div>
+                    <div class="metric-desc">3-Year Track Record</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="perf-card">
+                    <div class="icon-box">
+                        <!-- Analytics / Sharpe Ratio -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="28" height="28">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 19V5" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 19h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 15V9" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15V7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 15v-4" />
+                        </svg>
+                    </div>
+                    <div class="metric">1.87</div>
+                    <div class="metric-label">Sharpe Ratio</div>
+                    <div class="metric-desc">Risk-Adjusted Performance</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="perf-card">
+                    <div class="icon-box">
+                        <!-- Shield / Client Retention -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="28" height="28">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.5 12a2.5 2.5 0 115 0 2.5 2.5 0 01-5 0z" />
+                        </svg>
+                    </div>
+                    <div class="metric">98%</div>
+                    <div class="metric-label">Client Retention Rate</div>
+                    <div class="metric-desc">Year-Over-Year</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOBAL PRESENCE -->
+    <section style="padding:90px 40px 80px;background:#f5f4f1;overflow:hidden;position:relative;">
+
+        <!-- Subtle background texture -->
+        <div
+            style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;">
+        </div>
+
+        <div style="max-width:1200px;margin:0 auto;position:relative;z-index:1;">
+
+            <!-- Heading -->
+            <h2
+                style="font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;color:#0d1b35;margin:0 0 18px;line-height:1.15;letter-spacing:-0.5px;">
+                Global Market Presence
+            </h2>
+
+            <p style="max-width:580px;color:#4a5470;font-size:1rem;line-height:1.8;margin:0 0 60px;font-weight:400;">
+                We operate across major global financial markets, connecting capital to opportunities through a
+                disciplined and research-driven investment approach.
+            </p>
+
+            <!-- Map + Stats Wrapper -->
+            <div class="world-map" style="position:relative;width:100%;">
+
+                <!-- Ambient glow -->
+                <div
+                    style="position:absolute;width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,0.09) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;">
+                </div>
+
+                <!-- STAT CARD – Global Clients (top-left) -->
+                <div
+                    style="position:absolute;top:4%;left:2%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
+                    <div style="display:flex;align-items:baseline;gap:2px;">
+                        <h3 class="counter" data-target="250" data-suffix="+"
+                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
+                            0</h3>
+                    </div>
+                    <span
+                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Global
+                        Clients</span>
+                    <div
+                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
+                    </div>
+                </div>
+
+                <!-- STAT CARD – Partners (top-center) -->
+                <div
+                    style="position:absolute;top:0%;left:43%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
+                    <div style="display:flex;align-items:baseline;gap:2px;">
+                        <h3 class="counter" data-target="180" data-suffix="+"
+                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
+                            0</h3>
+                    </div>
+                    <span
+                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Partners</span>
+                    <div
+                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
+                    </div>
+                </div>
+
+                <!-- STAT CARD – Investments (top-right) -->
+                <div
+                    style="position:absolute;top:5%;right:1%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
+                    <div style="display:flex;align-items:baseline;gap:2px;">
+                        <h3 class="counter" data-target="320" data-suffix="+"
+                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
+                            0</h3>
+                    </div>
+                    <span
+                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Investments</span>
+                    <div
+                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
+                    </div>
+                </div>
+
+                <!-- STAT CARD – Markets (bottom-right) -->
+                <div
+                    style="position:absolute;bottom:6%;right:2%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
+                    <div style="display:flex;align-items:baseline;gap:2px;">
+                        <h3 class="counter" data-target="95" data-suffix="+"
+                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
+                            0</h3>
+                    </div>
+                    <span
+                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Markets</span>
+                    <div
+                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
+                    </div>
+                </div>
+
+                <!-- WORLD MAP SVG – realistic continents -->
+                <svg viewBox="0 0 1010 510" xmlns="http://www.w3.org/2000/svg"
+                    style="width:100%;max-width:1100px;display:block;margin:0 auto;position:relative;z-index:1;filter:drop-shadow(0 8px 32px rgba(13,27,53,0.18));">
+                    <defs>
+                        <filter id="shadow">
+                            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(13,27,53,0.3)" />
+                        </filter>
+                    </defs>
+
+                    <!-- NORTH AMERICA -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M70,60 L85,55 L105,52 L130,50 L155,52 L170,58 L175,65 L168,72 L178,75 L190,70 L205,68 L215,72 L220,80 
+             L225,92 L222,105 L215,115 L210,128 L215,138 L220,150 L218,162 L210,172 L205,185 L198,198 L190,210 
+             L180,220 L170,228 L160,232 L150,238 L142,248 L135,260 L128,272 L122,282 L115,288 L108,280 L100,268 
+             L95,255 L90,240 L85,225 L80,210 L75,195 L70,178 L65,162 L62,148 L60,132 L60,118 L62,104 L65,90 L68,75Z" />
+
+                    <!-- Greenland -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8"
+                        d="M195,18 L215,15 L232,18 L240,28 L238,40 L228,48 L215,52 L202,48 L194,38 L192,28Z" />
+
+                    <!-- CENTRAL AMERICA / CARIBBEAN -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M148,260 L162,255 L172,262 L178,272 L174,282 L165,288 L155,285 L148,275Z" />
+
+                    <!-- SOUTH AMERICA -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M150,295 L168,288 L182,290 L195,298 L205,312 L212,328 L215,345 L215,362 L212,378 L208,392 
+             L202,408 L194,420 L185,432 L175,440 L165,444 L155,440 L145,430 L138,415 L132,400 L128,384 
+             L126,368 L126,352 L128,336 L132,320 L138,306Z" />
+
+                    <!-- EUROPE -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M430,68 L442,62 L455,58 L470,55 L484,56 L495,62 L502,70 L505,80 L502,90 L496,100 
+             L488,108 L480,115 L472,118 L462,122 L452,120 L444,114 L438,106 L433,96 L430,84Z" />
+                    <!-- Iberian -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M420,110 L435,106 L442,114 L440,126 L430,132 L420,128 L415,118Z" />
+                    <!-- Scandinavia -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M455,42 L465,38 L478,40 L485,50 L480,58 L468,60 L458,55Z" />
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M475,35 L485,30 L498,32 L505,42 L500,52 L488,55 L478,48Z" />
+                    <!-- UK -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M430,68 L438,62 L445,65 L445,75 L438,80 L430,76Z" />
+
+                    <!-- AFRICA -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M435,148 L450,140 L466,136 L482,135 L498,138 L512,145 L522,156 L528,170 L530,186 
+             L528,202 L525,218 L522,234 L520,250 L518,266 L515,282 L510,298 L504,314 L496,328 
+             L486,338 L475,344 L464,345 L453,340 L443,330 L435,316 L428,302 L424,286 L422,270 
+             L422,254 L424,238 L427,222 L430,206 L432,190 L433,174 L433,160Z" />
+                    <!-- Madagascar -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M530,280 L538,272 L545,278 L545,295 L538,305 L530,298Z" />
+
+                    <!-- MIDDLE EAST -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M510,140 L535,135 L555,140 L565,155 L560,170 L548,178 L535,180 L522,175 L512,162Z" />
+
+                    <!-- RUSSIA / CENTRAL ASIA -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M510,40 L540,35 L580,30 L620,28 L660,28 L700,30 L730,35 L758,42 L778,52 L790,65 
+             L792,80 L785,95 L772,108 L755,118 L735,125 L715,128 L695,128 L675,125 L655,120 
+             L635,115 L615,112 L595,110 L575,108 L558,105 L545,100 L535,92 L525,82 L515,70Z" />
+
+                    <!-- SOUTH ASIA (India) -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M595,125 L618,118 L638,122 L652,135 L658,150 L655,168 L648,182 L638,192 L626,198 
+             L614,196 L604,186 L596,172 L592,156 L593,140Z" />
+
+                    <!-- CHINA / EAST ASIA -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M660,65 L695,58 L725,55 L752,58 L770,70 L778,85 L775,102 L765,115 L750,125 
+             L732,130 L712,132 L692,130 L674,124 L658,115 L648,102 L645,88 L650,75Z" />
+                    <!-- Japan -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M780,72 L790,68 L800,72 L800,82 L792,88 L782,85Z" />
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M788,58 L796,54 L804,58 L804,67 L796,72 L788,65Z" />
+
+                    <!-- SOUTHEAST ASIA -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
+                        d="M700,135 L725,130 L745,138 L752,152 L745,168 L730,175 L715,172 L702,162 L696,148Z" />
+                    <!-- Indonesia islands -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
+                        d="M730,190 L760,185 L778,192 L782,202 L770,210 L745,208 L730,200Z" />
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
+                        d="M780,195 L805,190 L820,198 L820,208 L808,214 L788,210Z" />
+
+                    <!-- AUSTRALIA -->
+                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M730,285 L762,278 L792,278 L818,285 L836,298 L845,315 L845,335 L840,352 
+             L828,365 L812,374 L794,378 L775,376 L758,368 L744,355 L734,340 L726,322 L724,305Z" />
+                    <!-- New Zealand -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
+                        d="M860,355 L868,348 L876,352 L876,365 L868,372 L860,368Z" />
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
+                        d="M865,340 L872,334 L880,338 L879,348 L872,352 L865,345Z" />
+
+                    <!-- KAZAKHSTAN / CENTRAL ASIA fill -->
+                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
+                        d="M570,108 L605,105 L625,112 L632,125 L618,132 L595,130 L570,122Z" />
+
+                    <!-- Dot markers for key cities -->
+                    <circle cx="178" cy="158" r="4" fill="#c8a84b" opacity="0.9" />
+                    <circle cx="178" cy="158" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
+
+                    <circle cx="472" cy="88" r="4" fill="#c8a84b" opacity="0.9" />
+                    <circle cx="472" cy="88" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
+
+                    <circle cx="686" cy="92" r="4" fill="#c8a84b" opacity="0.9" />
+                    <circle cx="686" cy="92" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
+
+                    <circle cx="624" cy="162" r="4" fill="#c8a84b" opacity="0.9" />
+                    <circle cx="624" cy="162" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
+
+                    <circle cx="782" cy="318" r="4" fill="#c8a84b" opacity="0.9" />
+                    <circle cx="782" cy="318" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
+
+                    <circle cx="476" cy="240" r="3.5" fill="#c8a84b" opacity="0.8" />
+                    <circle cx="476" cy="240" r="7" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.35" />
+
+                    <!-- Subtle grid lines -->
+                    <line x1="0" y1="255" x2="1010" y2="255" stroke="rgba(201,168,76,0.08)" stroke-width="1"
+                        stroke-dasharray="4,8" />
+                    <line x1="505" y1="0" x2="505" y2="510" stroke="rgba(201,168,76,0.08)" stroke-width="1"
+                        stroke-dasharray="4,8" />
+                    <ellipse cx="505" cy="255" rx="500" ry="250" fill="none" stroke="rgba(201,168,76,0.06)"
+                        stroke-width="1" />
+                    <ellipse cx="505" cy="255" rx="300" ry="250" fill="none" stroke="rgba(201,168,76,0.04)"
+                        stroke-width="1" />
+
+                </svg>
+
+            </div><!-- end map wrapper -->
+
+        </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section class="solutions">
+        <div class="container">
+            <h2 class="section-title2">Investment Solutions</h2>
+
+            <div class="title-line"></div>
+
+            <p class="section-sub2">
+                Smart investment solutions across global currency
+                and commodity markets.
+            </p>
+
+            <div class="solutions-grid">
+
+                <!-- Card 1 -->
+                <div class="sol-card">
+                    <div class="sol-icon">
+                        <!-- Gold / Commodity Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" width="55" height="55">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 16.5 12 21l9-4.5M3 12l9 4.5L21 12M3 7.5 12 12l9-4.5L12 3 3 7.5Z" />
+                        </svg>
+                    </div>
+
+                    <h3>COMMODITIES <br> EXCHANGE</h3>
+
+                    <div class="card-line"></div>
+
+                    <p>
+                        Investment opportunities in
+                        energy, metals, and
+                        agricultural markets.
+                    </p>
+
+                    <a href="#" class="btn-sm">Learn More</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="sol-card">
+                    <div class="sol-icon">
+                        <!-- Forex Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="55" height="55">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l6-6 4 4 6-6" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 8h4v4" />
+                        </svg>
+                    </div>
+
+                    <h3>FOREIGN <br> EXCHANGE</h3>
+
+                    <div class="card-line">
+
+                    </div>
+                    <p>
+                        Strategic access to global
+                        currency markets with
+                        disciplined risk management.
+                    </p>
+
+
+                    <a href="#" class="btn-sm">Learn More</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY MASSOURI -->
+    <section class="why-section">
+        <div class="container">
+
+            <h2 class="why-title">Why Massouri Investments</h2>
+
+            <p class="why-sub">
+                Built on a foundation of integrity, expertise, and client-first principles.
+            </p>
+
+            <div class="why-grid">
+
+                <!-- Item 1 -->
+                <div class="why-item">
+
+                    <div class="why-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="42" height="42">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-9-9" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 3-9 9" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 3" />
+                        </svg>
+                    </div>
+
+                    <h4>STRATEGIC DISCIPLINE</h4>
+
+                    <p>
+                        Investment decisions driven by data,
+                        research, and long-term vision.
+                    </p>
+
+                </div>
+
+                <!-- Item 2 -->
+                <div class="why-item">
+
+                    <div class="why-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="42" height="42">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 20a6 6 0 0 0-12 0" />
+                            <circle cx="12" cy="10" r="3" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M22 20a4 4 0 0 0-4-4" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 20a4 4 0 0 1 4-4" />
+                        </svg>
+                    </div>
+
+                    <h4>EXPERIENCED TEAM</h4>
+
+                    <p>
+                        Senior professionals with deep
+                        expertise across global markets.
+                    </p>
+
+                </div>
+
+                <!-- Item 3 -->
+                <div class="why-item">
+
+                    <div class="why-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                            stroke="currentColor" width="42" height="42">
+                            <rect x="5" y="10" width="14" height="10" rx="2" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 10V7a4 4 0 1 1 8 0v3" />
+                        </svg>
+                    </div>
+
+                    <h4>RISK CONTROL</h4>
+
+                    <p>
+                        Focused on capital preservation
+                        while capturing growth opportunities.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-inner">
+
+            <!-- Left -->
+            <div class="contact-left">
+                <h2>Begin Your Investment Journey</h2>
+                <p>Connect directly with our senior advisors to discuss your investment goals. Every inquiry is handled
+                    with discretion and expertise.</p>
+
+                <div class="contact-info">
+                    <a class="contact-info-item" href="mailto:contact@massouriinvestments.com">
+                        <span class="ci-icon">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="m2 7 10 7 10-7" />
+                            </svg>
+                        </span>
+                        <span class="ci-text">contact@massouriinvestments.com</span>
+                    </a>
+
+                    <a class="contact-info-item" href="#">
+                        <span class="ci-icon">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z" />
+                            </svg>
+                        </span>
+                        <span class="ci-text">
+                            Global Headquarters<br>Erbil, Kurdistan Region
+                        </span>
+                    </a>
+
+                    <a class="contact-info-item" href="tel:+441234567890">
+                        <span class="ci-icon">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.95 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.87 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </span>
+                        <span class="ci-text">+44 123 654 7890</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right – Form -->
+            <div class="contact-form-wrap">
+                <div class="form-header">
+                    <span>Confidential Inquiry Form</span>
+                    <span class="ssl-badge">
+                        <svg width="12" height="12" fill="none" stroke="#3aaa70" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        SSL Encrypted
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message"></textarea>
+                </div>
+                <button class="btn-submit">Submit Inquiry</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="newsletter">
+        <div class="newsletter-text">
+            <h3>Newsletter Subscription</h3>
+            <p>Sign up for free newsletters &amp; get more of Massouri Investments delivered to you.</p>
+        </div>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email to get the latest news...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-bottom"></div>
+
+        <div class="footer-main">
+
+            <!-- Brand -->
+
+            <div class="footer-logo-wrap">
+                <img class="footer-logo-mark" src="./asset/white-logo.png" alt="Massouri Investments">
+            </div>
+            <!-- Company -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Global Presences</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Collaborate -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Join Us -->
+            <div class="footer-socials-col">
+                <h5>Join Us</h5>
+                <div class="social-icons">
+                    <a href="#" title="YouTube">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.5 6.3a3 3 0 0 0-2.1-2.1C19.5 3.8 12 3.8 12 3.8s-7.5 0-9.4.4A3 3 0 0 0 .5 6.3 31 31 0 0 0 .1 12a31 31 0 0 0 .4 5.7 3 3 0 0 0 2.1 2.1c1.9.4 9.4.4 9.4.4s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.9 12a31 31 0 0 0-.4-5.7zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z" />
+                        </svg>
+                    </a>
+                    <a href="#" title="Facebook">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="#" title="X / Twitter">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Massouri Investments. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Terms &amp; Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Help Center</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const animateCounter = (counter) => {
+            const target = parseFloat(counter.dataset.target);
+            const suffix = counter.dataset.suffix || "";
+
+            let current = 0;
+            const increment = target / 100;
+
+            const update = () => {
+                current += increment;
+
+                if (current < target) {
+                    if (target % 1 !== 0) {
+                        counter.innerText = current.toFixed(1) + suffix;
+                    } else {
+                        counter.innerText = Math.ceil(current) + suffix;
+                    }
+                    requestAnimationFrame(update);
+                } else {
+                    if (target % 1 !== 0) {
+                        counter.innerText = target.toFixed(1) + suffix;
+                    } else {
+                        counter.innerText = target + suffix;
+                    }
+                }
+            };
+
+            update();
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionCounters = entry.target.querySelectorAll(".counter");
+                    sectionCounters.forEach(counter => {
+                        if (!counter.classList.contains("counted")) {
+                            counter.classList.add("counted");
+                            animateCounter(counter);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+
+        document.querySelectorAll(".stats, .world-map")
+            .forEach(section => observer.observe(section));
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
+</body>
+
+</html>
