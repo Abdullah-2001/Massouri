@@ -459,9 +459,9 @@
         .stat-item .value {
             font-family: 'DM Sans', sans-serif;
             font-size: clamp(54px, 6vw, 88px);
-            font-weight: 800;
+            font-weight: 500;
             line-height: 1;
-            color: #081a44;
+            color: #606267e2;
             margin-bottom: 14px;
             letter-spacing: -2px;
         }
@@ -1546,6 +1546,72 @@
             color: white;
         }
 
+        .wrap {
+            background: #0a2a8c;
+            background-image: radial-gradient(ellipse at 70% 50%, #0d3ab0 0%, #061a6e 50%, #040e45 100%);
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            padding: 48px 40px;
+            font-family: 'Barlow', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(0, 180, 255, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .left {
+            min-width: 220px;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .stat-item2 {
+            margin-bottom: 28px;
+            border-left: 3px solid #00cfff;
+            padding-left: 14px;
+        }
+
+        .stat-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 0.62rem;
+            font-weight: 400;
+            color: rgba(160, 210, 255, 0.75);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .map-wrap {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 320px;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            max-width: 680px;
+            height: auto;
+        }
+
         @media (max-width: 992px) {
 
             .newsletter {
@@ -1684,7 +1750,7 @@
             }
 
             .stats {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(1, 1fr);
             }
 
             nav {
@@ -1914,202 +1980,35 @@
             </p>
 
             <!-- Map + Stats Wrapper -->
-            <div class="world-map" style="position:relative;width:100%;">
-
-                <!-- Ambient glow -->
-                <div
-                    style="position:absolute;width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,0.09) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;">
-                </div>
-
-                <!-- STAT CARD – Global Clients (top-left) -->
-                <div
-                    style="position:absolute;top:4%;left:2%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
-                    <div style="display:flex;align-items:baseline;gap:2px;">
-                        <h3 class="counter" data-target="250" data-suffix="+"
-                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
-                            0</h3>
+            <div class="wrap">
+                <div class="left">
+                    <div class="stat-item2">
+                        <div class="stat-num" data-target="140" data-suffix="+">0</div>
+                        <div class="stat-label">Employee Locations</div>
                     </div>
-                    <span
-                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Global
-                        Clients</span>
-                    <div
-                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
+                    <div class="stat-item2">
+                        <div class="stat-num" data-target="100" data-suffix="+">0</div>
+                        <div class="stat-label">Global Exchanges</div>
                     </div>
-                </div>
+                    <div class="stat-item2">
+                        <div class="stat-num" data-target="13" data-suffix="M+">0</div>
+                        <div class="stat-label">Daily Average Trades</div>
+                    </div>
+                    <div class="stat-item2">
+                        <div class="stat-num" data-target="45" data-suffix="+">0</div>
+                        <div class="stat-label">Currencies Traded In</div>
+                    </div>
+                    <div class="stat-item2">
+                        <div class="stat-num" data-target="6600" data-suffix="+">0</div>
+                        <div class="stat-label">Employees Globally</div>
 
-                <!-- STAT CARD – Partners (top-center) -->
-                <div
-                    style="position:absolute;top:0%;left:43%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
-                    <div style="display:flex;align-items:baseline;gap:2px;">
-                        <h3 class="counter" data-target="180" data-suffix="+"
-                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
-                            0</h3>
-                    </div>
-                    <span
-                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Partners</span>
-                    <div
-                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
                     </div>
                 </div>
 
-                <!-- STAT CARD – Investments (top-right) -->
-                <div
-                    style="position:absolute;top:5%;right:1%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
-                    <div style="display:flex;align-items:baseline;gap:2px;">
-                        <h3 class="counter" data-target="320" data-suffix="+"
-                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
-                            0</h3>
-                    </div>
-                    <span
-                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Investments</span>
-                    <div
-                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
-                    </div>
+                <div class="map-wrap">
+                    <canvas id="mapCanvas" width="680" height="360"></canvas>
                 </div>
-
-                <!-- STAT CARD – Markets (bottom-right) -->
-                <div
-                    style="position:absolute;bottom:6%;right:2%;z-index:10;background:rgba(13,27,53,0.92);border:1px solid rgba(201,168,76,0.25);border-radius:16px;padding:18px 24px;min-width:148px;box-shadow:0 12px 40px rgba(13,27,53,0.3),0 0 0 1px rgba(201,168,76,0.08);backdrop-filter:blur(12px);">
-                    <div style="display:flex;align-items:baseline;gap:2px;">
-                        <h3 class="counter" data-target="95" data-suffix="+"
-                            style="margin:0;color:#c8a84b;font-size:2.1rem;font-weight:700;font-family:'Playfair Display',serif;line-height:1;">
-                            0</h3>
-                    </div>
-                    <span
-                        style="color:rgba(255,255,255,0.65);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;display:block;">Markets</span>
-                    <div
-                        style="width:28px;height:2px;background:linear-gradient(90deg,#c8a84b,transparent);margin-top:10px;border-radius:2px;">
-                    </div>
-                </div>
-
-                <!-- WORLD MAP SVG – realistic continents -->
-                <svg viewBox="0 0 1010 510" xmlns="http://www.w3.org/2000/svg"
-                    style="width:100%;max-width:1100px;display:block;margin:0 auto;position:relative;z-index:1;filter:drop-shadow(0 8px 32px rgba(13,27,53,0.18));">
-                    <defs>
-                        <filter id="shadow">
-                            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(13,27,53,0.3)" />
-                        </filter>
-                    </defs>
-
-                    <!-- NORTH AMERICA -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M70,60 L85,55 L105,52 L130,50 L155,52 L170,58 L175,65 L168,72 L178,75 L190,70 L205,68 L215,72 L220,80 
-             L225,92 L222,105 L215,115 L210,128 L215,138 L220,150 L218,162 L210,172 L205,185 L198,198 L190,210 
-             L180,220 L170,228 L160,232 L150,238 L142,248 L135,260 L128,272 L122,282 L115,288 L108,280 L100,268 
-             L95,255 L90,240 L85,225 L80,210 L75,195 L70,178 L65,162 L62,148 L60,132 L60,118 L62,104 L65,90 L68,75Z" />
-
-                    <!-- Greenland -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8"
-                        d="M195,18 L215,15 L232,18 L240,28 L238,40 L228,48 L215,52 L202,48 L194,38 L192,28Z" />
-
-                    <!-- CENTRAL AMERICA / CARIBBEAN -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M148,260 L162,255 L172,262 L178,272 L174,282 L165,288 L155,285 L148,275Z" />
-
-                    <!-- SOUTH AMERICA -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M150,295 L168,288 L182,290 L195,298 L205,312 L212,328 L215,345 L215,362 L212,378 L208,392 
-             L202,408 L194,420 L185,432 L175,440 L165,444 L155,440 L145,430 L138,415 L132,400 L128,384 
-             L126,368 L126,352 L128,336 L132,320 L138,306Z" />
-
-                    <!-- EUROPE -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M430,68 L442,62 L455,58 L470,55 L484,56 L495,62 L502,70 L505,80 L502,90 L496,100 
-             L488,108 L480,115 L472,118 L462,122 L452,120 L444,114 L438,106 L433,96 L430,84Z" />
-                    <!-- Iberian -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M420,110 L435,106 L442,114 L440,126 L430,132 L420,128 L415,118Z" />
-                    <!-- Scandinavia -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M455,42 L465,38 L478,40 L485,50 L480,58 L468,60 L458,55Z" />
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M475,35 L485,30 L498,32 L505,42 L500,52 L488,55 L478,48Z" />
-                    <!-- UK -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M430,68 L438,62 L445,65 L445,75 L438,80 L430,76Z" />
-
-                    <!-- AFRICA -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M435,148 L450,140 L466,136 L482,135 L498,138 L512,145 L522,156 L528,170 L530,186 
-             L528,202 L525,218 L522,234 L520,250 L518,266 L515,282 L510,298 L504,314 L496,328 
-             L486,338 L475,344 L464,345 L453,340 L443,330 L435,316 L428,302 L424,286 L422,270 
-             L422,254 L424,238 L427,222 L430,206 L432,190 L433,174 L433,160Z" />
-                    <!-- Madagascar -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M530,280 L538,272 L545,278 L545,295 L538,305 L530,298Z" />
-
-                    <!-- MIDDLE EAST -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M510,140 L535,135 L555,140 L565,155 L560,170 L548,178 L535,180 L522,175 L512,162Z" />
-
-                    <!-- RUSSIA / CENTRAL ASIA -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M510,40 L540,35 L580,30 L620,28 L660,28 L700,30 L730,35 L758,42 L778,52 L790,65 
-             L792,80 L785,95 L772,108 L755,118 L735,125 L715,128 L695,128 L675,125 L655,120 
-             L635,115 L615,112 L595,110 L575,108 L558,105 L545,100 L535,92 L525,82 L515,70Z" />
-
-                    <!-- SOUTH ASIA (India) -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M595,125 L618,118 L638,122 L652,135 L658,150 L655,168 L648,182 L638,192 L626,198 
-             L614,196 L604,186 L596,172 L592,156 L593,140Z" />
-
-                    <!-- CHINA / EAST ASIA -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M660,65 L695,58 L725,55 L752,58 L770,70 L778,85 L775,102 L765,115 L750,125 
-             L732,130 L712,132 L692,130 L674,124 L658,115 L648,102 L645,88 L650,75Z" />
-                    <!-- Japan -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M780,72 L790,68 L800,72 L800,82 L792,88 L782,85Z" />
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M788,58 L796,54 L804,58 L804,67 L796,72 L788,65Z" />
-
-                    <!-- SOUTHEAST ASIA -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.7"
-                        d="M700,135 L725,130 L745,138 L752,152 L745,168 L730,175 L715,172 L702,162 L696,148Z" />
-                    <!-- Indonesia islands -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
-                        d="M730,190 L760,185 L778,192 L782,202 L770,210 L745,208 L730,200Z" />
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
-                        d="M780,195 L805,190 L820,198 L820,208 L808,214 L788,210Z" />
-
-                    <!-- AUSTRALIA -->
-                    <path filter="url(#shadow)" fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.8" d="M730,285 L762,278 L792,278 L818,285 L836,298 L845,315 L845,335 L840,352 
-             L828,365 L812,374 L794,378 L775,376 L758,368 L744,355 L734,340 L726,322 L724,305Z" />
-                    <!-- New Zealand -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
-                        d="M860,355 L868,348 L876,352 L876,365 L868,372 L860,368Z" />
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
-                        d="M865,340 L872,334 L880,338 L879,348 L872,352 L865,345Z" />
-
-                    <!-- KAZAKHSTAN / CENTRAL ASIA fill -->
-                    <path fill="#2d3a52" stroke="#f5f4f1" stroke-width="0.6"
-                        d="M570,108 L605,105 L625,112 L632,125 L618,132 L595,130 L570,122Z" />
-
-                    <!-- Dot markers for key cities -->
-                    <circle cx="178" cy="158" r="4" fill="#c8a84b" opacity="0.9" />
-                    <circle cx="178" cy="158" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
-
-                    <circle cx="472" cy="88" r="4" fill="#c8a84b" opacity="0.9" />
-                    <circle cx="472" cy="88" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
-
-                    <circle cx="686" cy="92" r="4" fill="#c8a84b" opacity="0.9" />
-                    <circle cx="686" cy="92" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
-
-                    <circle cx="624" cy="162" r="4" fill="#c8a84b" opacity="0.9" />
-                    <circle cx="624" cy="162" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
-
-                    <circle cx="782" cy="318" r="4" fill="#c8a84b" opacity="0.9" />
-                    <circle cx="782" cy="318" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.4" />
-
-                    <circle cx="476" cy="240" r="3.5" fill="#c8a84b" opacity="0.8" />
-                    <circle cx="476" cy="240" r="7" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.35" />
-
-                    <!-- Subtle grid lines -->
-                    <line x1="0" y1="255" x2="1010" y2="255" stroke="rgba(201,168,76,0.08)" stroke-width="1"
-                        stroke-dasharray="4,8" />
-                    <line x1="505" y1="0" x2="505" y2="510" stroke="rgba(201,168,76,0.08)" stroke-width="1"
-                        stroke-dasharray="4,8" />
-                    <ellipse cx="505" cy="255" rx="500" ry="250" fill="none" stroke="rgba(201,168,76,0.06)"
-                        stroke-width="1" />
-                    <ellipse cx="505" cy="255" rx="300" ry="250" fill="none" stroke="rgba(201,168,76,0.04)"
-                        stroke-width="1" />
-
-                </svg>
-
-            </div><!-- end map wrapper -->
+            </div>
 
         </div>
     </section>
@@ -2432,53 +2331,147 @@
             </div>
         </div>
     </footer>
-
     <script>
-        const animateCounter = (counter) => {
-            const target = parseFloat(counter.dataset.target);
-            const suffix = counter.dataset.suffix || "";
+        // ─── DOT MAP SETUP ───────────────────────────────────────────
+        function gen(x0, y0, x1, y1, count) {
+            const pts = [];
+            for (let i = 0; i < count; i++) {
+                pts.push({ x: x0 + Math.random() * (x1 - x0), y: y0 + Math.random() * (y1 - y0) });
+            }
+            return pts;
+        }
 
-            let current = 0;
-            const increment = target / 100;
+        const continentRegions = [
+            ...gen(0.06, 0.08, 0.20, 0.55, 55),
+            ...gen(0.12, 0.56, 0.24, 0.95, 40),
+            ...gen(0.42, 0.06, 0.56, 0.38, 38),
+            ...gen(0.42, 0.30, 0.57, 0.88, 50),
+            ...gen(0.50, 0.04, 0.85, 0.30, 70),
+            ...gen(0.52, 0.28, 0.62, 0.44, 18),
+            ...gen(0.60, 0.30, 0.70, 0.56, 22),
+            ...gen(0.68, 0.08, 0.84, 0.38, 42),
+            ...gen(0.70, 0.40, 0.84, 0.60, 20),
+            ...gen(0.73, 0.60, 0.88, 0.84, 30),
+            ...gen(0.18, 0.02, 0.26, 0.14, 10),
+        ];
 
-            const update = () => {
-                current += increment;
+        const hotspots = [
+            { x: 0.13, y: 0.30 }, { x: 0.44, y: 0.17 }, { x: 0.55, y: 0.34 },
+            { x: 0.65, y: 0.40 }, { x: 0.79, y: 0.70 }, { x: 0.52, y: 0.18 },
+            { x: 0.72, y: 0.20 }, { x: 0.63, y: 0.52 }, { x: 0.80, y: 0.25 },
+            { x: 0.20, y: 0.58 },
+        ];
 
-                if (current < target) {
-                    if (target % 1 !== 0) {
-                        counter.innerText = current.toFixed(1) + suffix;
+        // ✅ Wait for DOM before accessing canvas
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const canvas = document.getElementById('mapCanvas');
+            const ctx = canvas.getContext('2d');
+            const W = canvas.width, H = canvas.height;
+            let frame = 0;
+
+            function drawMap(t) {
+                ctx.clearRect(0, 0, W, H);
+
+                continentRegions.forEach((pt, i) => {
+                    const cx = pt.x * W;
+                    const cy = pt.y * H;
+                    const pulse = 0.7 + 0.3 * Math.sin(t * 0.03 + i * 0.4);
+                    const r = 2.2;
+
+                    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 3);
+                    grd.addColorStop(0, `rgba(0,220,255,${0.18 * pulse})`);
+                    grd.addColorStop(1, 'rgba(0,220,255,0)');
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, r * 3, 0, Math.PI * 2);
+                    ctx.fillStyle = grd;
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(0,210,255,${0.55 * pulse})`;
+                    ctx.fill();
+                });
+
+                hotspots.forEach((pt, i) => {
+                    const cx = pt.x * W;
+                    const cy = pt.y * H;
+                    const pulse = 0.6 + 0.4 * Math.sin(t * 0.05 + i * 1.2);
+
+                    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 14);
+                    grd.addColorStop(0, `rgba(100,240,255,${0.35 * pulse})`);
+                    grd.addColorStop(1, 'rgba(0,180,255,0)');
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+                    ctx.fillStyle = grd;
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(180,245,255,${0.9 * pulse})`;
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 7 + 3 * pulse, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(0,220,255,${0.25 * pulse})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+            }
+
+            function animateMap() {
+                frame++;
+                drawMap(frame);
+                requestAnimationFrame(animateMap);
+            }
+
+            animateMap();
+
+            // ─── COUNTER ANIMATION ────────────────────────────────────
+            const animateCounter = (counter) => {
+                const target = parseFloat(counter.dataset.target);
+                const suffix = counter.dataset.suffix || "";
+                let current = 0;
+                const increment = target / 100;
+
+                const update = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = target % 1 !== 0
+                            ? current.toFixed(1) + suffix
+                            : Math.ceil(current) + suffix;
+                        requestAnimationFrame(update);
                     } else {
-                        counter.innerText = Math.ceil(current) + suffix;
+                        counter.innerText = target % 1 !== 0
+                            ? target.toFixed(1) + suffix
+                            : target + suffix;
                     }
-                    requestAnimationFrame(update);
-                } else {
-                    if (target % 1 !== 0) {
-                        counter.innerText = target.toFixed(1) + suffix;
-                    } else {
-                        counter.innerText = target + suffix;
-                    }
-                }
+                };
+
+                update();
             };
 
-            update();
-        };
+            // ─── INTERSECTION OBSERVER ────────────────────────────────
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll(".counter, .stat-num").forEach(counter => {
+                            if (!counter.classList.contains("counted")) {
+                                counter.classList.add("counted");
+                                animateCounter(counter);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3 }); // ✅ lowered to 0.3 so it fires sooner
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionCounters = entry.target.querySelectorAll(".counter");
-                    sectionCounters.forEach(counter => {
-                        if (!counter.classList.contains("counted")) {
-                            counter.classList.add("counted");
-                            animateCounter(counter);
-                        }
-                    });
-                }
-            });
-        }, { threshold: 0.4 });
+            // ✅ Now also observes .wrap which wraps .left (stat-num items)
+            document.querySelectorAll(".stats, .world-map, .wrap")
+                .forEach(section => observer.observe(section));
 
-        document.querySelectorAll(".stats, .world-map")
-            .forEach(section => observer.observe(section));
+        }); // end DOMContentLoaded
+
+        // ─── NAVBAR TOGGLE ────────────────────────────────────────────
         function toggleMenu() {
             document.getElementById("navLinks").classList.toggle("active");
         }
