@@ -1,0 +1,450 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>World Map – Glowing Regions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#0b1a36;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    min-height:100vh;
+    font-family:'Rajdhani',sans-serif;
+    overflow:hidden;
+  }
+  h1{
+    color:#c9a84c;
+    font-family:'Cinzel',serif;
+    font-size:1.4rem;letter-spacing:4px;
+    text-transform:uppercase;margin-bottom:16px;
+    text-shadow:0 0 20px rgba(201,168,76,0.7);
+  }
+  #map-container{position:relative;width:98vw;max-width:1400px;}
+  svg#worldmap{width:100%;height:auto;display:block;}
+  .country{fill:#1a2d55;stroke:#2e4a82;stroke-width:0.4;}
+
+  /* Simple CSS blink on border paths */
+  .border-blink {
+    animation: borderBlink 1.4s ease-in-out infinite;
+  }
+  @keyframes borderBlink {
+    0%,100% { stroke-opacity: 1; }
+    50%      { stroke-opacity: 0.15; }
+  }
+</style>
+</head>
+<body>
+<h1>Global Presence</h1>
+<div id="map-container">
+  <svg id="worldmap" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="pulse-glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="6" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <radialGradient id="dot-grad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="30%" stop-color="#c9a84c" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g id="countries-layer"></g>
+    <g id="border-layer"></g>
+    <g id="markers-layer"></g>
+  </svg>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const HIGHLIGHTS = [
+  { iso:"USA", label:"United States",  lat:39.5,  lon:-98.4  },
+  { iso:"GBR", label:"United Kingdom", lat:54.0,  lon:-2.5   },
+  { iso:"DEU", label:"Germany",        lat:51.2,  lon:10.4   },
+  { iso:"FRA", label:"France",         lat:46.6,  lon:2.3    },
+  { iso:"JPN", label:"Japan",          lat:36.2,  lon:138.3  },
+  { iso:"NZL", label:"New Zealand",    lat:-41.3, lon:174.8  },
+  { iso:"AUS", label:"Australia",      lat:-25.3, lon:133.8  },
+  { iso:"CAN", label:"Canada",         lat:60.0,  lon:-96.0  },
+];
+
+const GOLD = "201,168,76";
+const projection = d3.geoNaturalEarth1().scale(153).translate([480,250]);
+const path = d3.geoPath().projection(projection);
+
+const layer  = d3.select("#countries-layer");
+const bLayer = d3.select("#border-layer");
+const mLayer = d3.select("#markers-layer");
+
+const numToIso = {
+  840:"USA",826:"GBR",276:"DEU",250:"FRA",392:"JPN",
+  554:"NZL",36:"AUS",124:"CAN",
+  76:"BRA",643:"RUS",356:"IND",156:"CHN",710:"ZAF",
+  484:"MEX",380:"ITA",724:"ESP",620:"PRT",56:"BEL",
+  528:"NLD",752:"SWE",578:"NOR",246:"FIN",208:"DNK",
+  40:"AUT",756:"CHE",616:"POL",348:"HUN",203:"CZE",
+  100:"BGR",642:"ROU",804:"UKR",112:"BLR",268:"GEO",
+  792:"TUR",364:"IRN",682:"SAU",400:"JOR",368:"IRQ",
+  760:"SYR",422:"LBN",376:"ISR",818:"EGY",12:"DZA",
+  504:"MAR",788:"TUN",434:"LBY",231:"ETH",404:"KEN",
+  800:"UGA",834:"TZA",508:"MOZ",716:"ZWE",566:"NGA",
+  288:"GHA",384:"CIV",204:"BEN",854:"BFA",694:"SLE",
+  324:"GIN",466:"MLI",562:"NER",148:"TCD",729:"SDN",
+  706:"SOM",862:"VEN",170:"COL",604:"PER",152:"CHL",
+  68:"BOL",600:"PRY",858:"URY",32:"ARG",410:"KOR",
+  408:"PRK",418:"LAO",116:"KHM",764:"THA",704:"VNM",
+  104:"MMR",50:"BGD",144:"LKA",586:"PAK",4:"AFG",
+  398:"KAZ",860:"UZB",795:"TKM",762:"TJK",417:"KGZ",
+  496:"MNG",458:"MYS",702:"SGP",360:"IDN",608:"PHL",
+  178:"COG",180:"COD",516:"NAM",72:"BWA",454:"MWI",
+  646:"RWA",108:"BDI",686:"SEN",242:"FJI",598:"PNG",
+};
+
+const highlightSet = new Set(HIGHLIGHTS.map(h => h.iso));
+
+fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+  .then(r => r.json())
+  .then(world => {
+    const countries = topojson.feature(world, world.objects.countries);
+
+    // Base fills
+    layer.selectAll("path")
+      .data(countries.features)
+      .join("path")
+        .attr("class","country")
+        .attr("d", path)
+        .attr("fill", d => {
+          const iso = numToIso[+d.id]||"";
+          return highlightSet.has(iso) ? `rgba(${GOLD},0.22)` : "#1a2d55";
+        })
+        .attr("stroke", d => {
+          const iso = numToIso[+d.id]||"";
+          return highlightSet.has(iso) ? "none" : "#2e4a82";
+        })
+        .attr("stroke-width", 0.4);
+
+    // Blinking border — one clean path per highlighted country
+    countries.features.forEach((d, i) => {
+      const iso = numToIso[+d.id]||"";
+      if (!highlightSet.has(iso)) return;
+      const pathD = path(d);
+
+      // Each country gets a slightly different animation delay so they don't all blink in sync
+      const delay = (i * 137) % 1400; // spread delays 0–1400ms
+
+      bLayer.append("path")
+        .attr("d", pathD)
+        .attr("fill","none")
+        .attr("stroke", `rgba(${GOLD},1)`)
+        .attr("stroke-width", 1.4)
+        .attr("filter","url(#soft-glow)")
+        .attr("class","border-blink")
+        .style("animation-delay", `-${delay}ms`);
+    });
+
+    // Markers
+    HIGHLIGHTS.forEach(h => {
+      const [x, y] = projection([h.lon, h.lat]);
+      if (!x||!y) return;
+      const g = mLayer.append("g");
+
+      g.append("circle").attr("cx",x).attr("cy",y).attr("r",14)
+        .attr("fill","none").attr("stroke",`rgba(${GOLD},0.3)`)
+        .attr("stroke-width",1).attr("class","pulse-ring").attr("data-phase","0");
+      g.append("circle").attr("cx",x).attr("cy",y).attr("r",14)
+        .attr("fill","none").attr("stroke",`rgba(${GOLD},0.3)`)
+        .attr("stroke-width",1).attr("class","pulse-ring").attr("data-phase","0.5");
+
+      g.append("circle").attr("cx",x).attr("cy",y).attr("r",9)
+        .attr("fill","url(#dot-grad)").attr("filter","url(#pulse-glow)");
+
+      const labelY = y - 42;
+      g.append("line")
+        .attr("x1",x).attr("y1",y-10).attr("x2",x).attr("y2",labelY+16)
+        .attr("stroke",`rgba(${GOLD},0.65)`).attr("stroke-width",1)
+        .attr("stroke-dasharray","3,3");
+
+      const fontSize = 9.5, padX = 9, padY = 5;
+      const approxW = h.label.length * fontSize * 0.6 + padX*2;
+      const boxH = fontSize + padY*2;
+      g.append("rect")
+        .attr("x",x-approxW/2).attr("y",labelY-boxH/2)
+        .attr("width",approxW).attr("height",boxH)
+        .attr("rx",5).attr("ry",5)
+        .attr("fill","rgba(7,14,32,0.93)")
+        .attr("stroke",`rgba(${GOLD},0.9)`).attr("stroke-width",0.9)
+        .attr("filter","url(#pulse-glow)");
+      g.append("text")
+        .attr("x",x).attr("y",labelY+fontSize/2-1)
+        .attr("text-anchor","middle")
+        .attr("fill","#fff4c7").attr("font-size",fontSize)
+        .attr("font-family","Rajdhani,sans-serif").attr("font-weight","600")
+        .text(h.label);
+    });
+
+    // Pulse rings JS animation
+    function animatePulse(t) {
+      document.querySelectorAll(".pulse-ring").forEach(ring => {
+        const phase = parseFloat(ring.getAttribute("data-phase"))||0;
+        const prog = ((t * 0.0006 + phase) % 1);
+        ring.setAttribute("r", 8 + prog * 28);
+        ring.setAttribute("stroke-opacity", 0.6 - prog * 0.6);
+      });
+      requestAnimationFrame(animatePulse);
+    }
+    requestAnimationFrame(animatePulse);
+  });
+</script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            background: #0b1a36;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Rajdhani', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #c9a84c;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-shadow: 0 0 20px rgba(201, 168, 76, 0.7);
+        }
+
+        #map-container {
+            position: relative;
+            width: 98vw;
+            max-width: 1400px;
+        }
+
+        svg#worldmap {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .country {
+            fill: #1a2d55;
+            stroke: #2e4a82;
+            stroke-width: 0.4;
+        }
+
+        .border-blink {
+            animation: borderBlink 1.4s ease-in-out infinite;
+        }
+
+        @keyframes borderBlink {
+
+            0%,
+            100% {
+                stroke-opacity: 1;
+            }
+
+            50% {
+                stroke-opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map-container">
+        <svg id="worldmap" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="2.5" result="b" />
+                    <feMerge>
+                        <feMergeNode in="b" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <filter id="pulse-glow" x="-60%" y="-60%" width="220%" height="220%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+            <g id="countries-layer"></g>
+            <g id="border-layer"></g>
+            <g id="labels-layer"></g>
+        </svg>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <script>
+        const HIGHLIGHTS = [
+            { iso: "DEU", code: "DE" },
+            { iso: "NLD", code: "NL" },
+            { iso: "TUR", code: "TR" },
+            { iso: "IRQ", code: "IQ" },
+            { iso: "ARE", code: "AE" },
+            { iso: "AFG", code: "AF" },
+            // Europe neighbors
+            { iso: "FRA", code: "FR" },
+            { iso: "GBR", code: "GB" },
+            { iso: "ESP", code: "ES" },
+            { iso: "ITA", code: "IT" },
+            { iso: "POL", code: "PL" },
+            { iso: "BEL", code: "BE" },
+            { iso: "AUT", code: "AT" },
+            { iso: "CHE", code: "CH" },
+            { iso: "CZE", code: "CZ" },
+            { iso: "HUN", code: "HU" },
+            { iso: "SVK", code: "SK" },
+            { iso: "SVN", code: "SI" },
+            { iso: "HRV", code: "HR" },
+            { iso: "BGR", code: "BG" },
+            { iso: "ROU", code: "RO" },
+            { iso: "SRB", code: "RS" },
+            { iso: "DNK", code: "DK" },
+            { iso: "SWE", code: "SE" },
+            { iso: "NOR", code: "NO" },
+            { iso: "FIN", code: "FI" },
+            { iso: "PRT", code: "PT" },
+            { iso: "GRC", code: "GR" },
+            { iso: "UKR", code: "UA" },
+            { iso: "BLR", code: "BY" },
+            { iso: "LTU", code: "LT" },
+            { iso: "LVA", code: "LV" },
+            { iso: "EST", code: "EE" },
+            { iso: "MDA", code: "MD" },
+            { iso: "ALB", code: "AL" },
+            { iso: "MKD", code: "MK" },
+            { iso: "MNE", code: "ME" },
+            { iso: "BIH", code: "BA" },
+            { iso: "LUX", code: "LU" },
+            { iso: "IRL", code: "IE" },
+        ];
+
+        const GOLD = "201,168,76";
+        const projection = d3.geoNaturalEarth1().scale(153).translate([480, 250]);
+        const path = d3.geoPath().projection(projection);
+
+        const layer = d3.select("#countries-layer");
+        const bLayer = d3.select("#border-layer");
+        const lLayer = d3.select("#labels-layer");
+
+        const numToIso = {
+            840: "USA", 826: "GBR", 276: "DEU", 250: "FRA", 392: "JPN",
+            554: "NZL", 36: "AUS", 124: "CAN",
+            76: "BRA", 643: "RUS", 356: "IND", 156: "CHN", 710: "ZAF",
+            484: "MEX", 380: "ITA", 724: "ESP", 620: "PRT", 56: "BEL",
+            528: "NLD", 752: "SWE", 578: "NOR", 246: "FIN", 208: "DNK",
+            40: "AUT", 756: "CHE", 616: "POL", 348: "HUN", 203: "CZE",
+            100: "BGR", 642: "ROU", 804: "UKR", 112: "BLR", 268: "GEO",
+            792: "TUR", 364: "IRN", 682: "SAU", 400: "JOR", 368: "IRQ",
+            760: "SYR", 422: "LBN", 376: "ISR", 818: "EGY", 12: "DZA",
+            504: "MAR", 788: "TUN", 434: "LBY", 231: "ETH", 404: "KEN",
+            800: "UGA", 834: "TZA", 508: "MOZ", 716: "ZWE", 566: "NGA",
+            288: "GHA", 384: "CIV", 204: "BEN", 854: "BFA", 694: "SLE",
+            324: "GIN", 466: "MLI", 562: "NER", 148: "TCD", 729: "SDN",
+            706: "SOM", 862: "VEN", 170: "COL", 604: "PER", 152: "CHL",
+            68: "BOL", 600: "PRY", 858: "URY", 32: "ARG", 410: "KOR",
+            408: "PRK", 418: "LAO", 116: "KHM", 764: "THA", 704: "VNM",
+            104: "MMR", 50: "BGD", 144: "LKA", 586: "PAK", 4: "AFG",
+            398: "KAZ", 860: "UZB", 795: "TKM", 762: "TJK", 417: "KGZ",
+            496: "MNG", 458: "MYS", 702: "SGP", 360: "IDN", 608: "PHL",
+            178: "COG", 180: "COD", 516: "NAM", 72: "BWA", 454: "MWI",
+            646: "RWA", 108: "BDI", 686: "SEN", 242: "FJI", 598: "PNG",
+            784: "ARE", 703: "SVK", 705: "SVN", 191: "HRV", 688: "SRB",
+            807: "MKD", 499: "MNE", 70: "BIH", 440: "LTU", 428: "LVA",
+            233: "EST", 498: "MDA", 8: "ALB", 442: "LUX", 372: "IRL",
+        };
+
+        const isoToCode = {};
+        HIGHLIGHTS.forEach(h => { isoToCode[h.iso] = h.code; });
+
+        const highlightSet = new Set(HIGHLIGHTS.map(h => h.iso));
+
+        fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+            .then(r => r.json())
+            .then(world => {
+                const countries = topojson.feature(world, world.objects.countries);
+
+                layer.selectAll("path")
+                    .data(countries.features)
+                    .join("path")
+                    .attr("class", "country")
+                    .attr("d", path)
+                    .attr("fill", d => {
+                        const iso = numToIso[+d.id] || "";
+                        return highlightSet.has(iso) ? `rgba(${GOLD},0.22)` : "#1a2d55";
+                    })
+                    .attr("stroke", d => {
+                        const iso = numToIso[+d.id] || "";
+                        return highlightSet.has(iso) ? "none" : "#2e4a82";
+                    })
+                    .attr("stroke-width", 0.4);
+
+                countries.features.forEach((d, i) => {
+                    const iso = numToIso[+d.id] || "";
+                    if (!highlightSet.has(iso)) return;
+                    const pathD = path(d);
+                    const delay = (i * 137) % 1400;
+
+                    bLayer.append("path")
+                        .attr("d", pathD)
+                        .attr("fill", "none")
+                        .attr("stroke", `#FFFFFF`)
+                        .attr("stroke-width", 1.4)
+                        .attr("filter", "url(#soft-glow)")
+                        .attr("class", "border-blink")
+                        .style("animation-delay", `-${delay}ms`);
+
+                    // 2-letter code at centroid
+                    const centroid = path.centroid(d);
+                    if (centroid && !isNaN(centroid[0]) && !isNaN(centroid[1])) {
+                        const code = isoToCode[iso];
+                        if (code) {
+                            lLayer.append("text")
+                                .attr("x", centroid[0])
+                                .attr("y", centroid[1])
+                                .attr("text-anchor", "middle")
+                                .attr("dominant-baseline", "central")
+                                .attr("fill", "#fff4c7")
+                                .attr("font-size", 7)
+                                .attr("font-family", "Rajdhani,sans-serif")
+                                .attr("font-weight", "700")
+                                .attr("pointer-events", "none")
+                                .text(code);
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+
+</html> -->
