@@ -7,6 +7,8 @@
     <title>Massouri Investments – Strategic. Global. Long-Term.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link
@@ -84,6 +86,12 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 1px 8px rgba(0, 0, 0, .06);
+        }
+
+        .logo-img {
+            width: 250px;
+            height: 100px;
+
         }
 
         .language-dropdown select {
@@ -250,6 +258,10 @@
             font-weight: 600;
             cursor: pointer;
             transition: .3s;
+        }
+
+        a.hero-btn {
+            text-decoration: none;
         }
 
         .hero-btn:hover {
@@ -429,6 +441,12 @@
             transition: 0.3s ease;
         }
 
+        .a-tag {
+            text-decoration: none;
+            color: inherit;
+
+        }
+
         .about-secondary:hover {
             border-color: #081a44;
             color: #081a44;
@@ -440,7 +458,7 @@
 
         .about-image img {
             width: 100%;
-            height: 720px;
+            height: 550px;
             object-fit: cover;
             border-radius: 38px;
             display: block;
@@ -481,17 +499,17 @@
         } */
 
         .stat-item .value {
-            font-family: "Merriweather", serif;
+            font-family: serif;
             /* font-family: "Cormorant", serif; */
             /* font-family: 'Playfair Display', serif !important; */
             /*   font-family: "Poppins", sans-serif;
  */
-            font-size: clamp(54px, 6vw, 88px);
+            font-size: 125px;
             font-weight: 100;
             line-height: 1;
             color: #606267e2;
-            margin-bottom: 14px;
-            letter-spacing: 10px;
+            margin-bottom: 1px;
+            letter-spacing: 5px;
         }
 
         .stat-item .label {
@@ -502,7 +520,7 @@
             font-weight: 500;
             color: #6b7280;
             letter-spacing: 0.2px;
-            word-spacing: 5px;
+            word-spacing: 0px;
         }
 
         /* =========================
@@ -796,6 +814,12 @@
             /* margin-bottom: 25px; */
         }
 
+        .sol-icon img {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+        }
+
         .sol-card h3 {
             font-family: "Poppins", sans-serif;
 
@@ -950,7 +974,6 @@
 
         .perf-card .metric {
             font-family: "Poppins", sans-serif;
-
             font-size: clamp(72px, 6vw, 92px);
             font-weight: 600;
             line-height: 0.95;
@@ -1601,8 +1624,8 @@
         }
 
         .wrap {
-            background: #0a2a8c;
-            background-image: radial-gradient(ellipse at 70% 50%, #0d3ab0 0%, #061a6e 50%, #040e45 100%);
+            background: #1a1a2e;
+            background-image: radial-gradient(ellipse at 70% 50%, #16213e 0%, #0f1a2e 50%, #0a1020 100%);
             min-height: 420px;
             display: flex;
             align-items: center;
@@ -1616,7 +1639,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(0, 180, 255, 0.04) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -1653,6 +1676,7 @@
         .map-wrap {
             flex: 1;
             position: relative;
+            /* ← add this */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1664,6 +1688,8 @@
             width: 100%;
             max-width: 680px;
             height: auto;
+            background: transparent;
+            /* ← make canvas bg transparent */
         }
 
         @media (max-width: 992px) {
@@ -1837,7 +1863,7 @@
 
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="./asset/logo.png" alt="Massouri Investments">
+            <img class="logo-img" src="./asset/logo.png" alt="Massouri Investments">
         </div>
 
         <!-- Hamburger -->
@@ -1856,7 +1882,7 @@
                 <select>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
-                    <option value="fr">FR</option>
+                    <option value="fr">NL</option>
                 </select>
             </li>
         </ul>
@@ -1878,7 +1904,7 @@
                 and long term value creation.
             </p>
 
-            <button class="hero-btn">Contact Us</button>
+            <a href="contactUs.html" class="hero-btn">Contact Us</a>
         </div>
     </section>
 
@@ -1914,7 +1940,9 @@
 
                 <div class="about-btns">
                     <button class="about-primary">Learn More</button>
-                    <button class="about-secondary">Contact Us</button>
+                    <button class="about-secondary"><a class="a-tag" href="contactUs.html">Contact Us</a></button>
+                    <!-- <a href="contactUs.html" class="about-secondary">Contact Us</a> -->
+
                 </div>
             </div>
 
@@ -1954,7 +1982,8 @@
         <div style="margin:0 auto;">
             <h2 class="section-title">Performance</h2>
             <p class="section-sub">
-                Track record built over 7+ years across full market cycles, bull markets, corrections.</p>
+                Track record built over 7+ years across full market cycles, bull markets, Bear markets & corrections.
+            </p>
             <div class="perf-grid">
 
                 <!-- Card 1 -->
@@ -1969,7 +1998,7 @@
                     </div>
                     <div class="metric">60.2%</div>
                     <div class="metric-label">Average Annualized Return</div>
-                    <div class="metric-desc">6 Year Track Record</div>
+                    <div class="metric-desc">7 Year Track Record</div>
                 </div>
 
                 <!-- Card 2 -->
@@ -2034,34 +2063,19 @@
             </p>
 
             <!-- Map + Stats Wrapper -->
-            <div class="wrap">
-                <div class="left">
-                    <div class="stat-item2">
-                        <div class="stat-num" data-target="140" data-suffix="+">0</div>
-                        <div class="stat-label">Employee Locations</div>
-                    </div>
-                    <div class="stat-item2">
-                        <div class="stat-num" data-target="100" data-suffix="+">0</div>
-                        <div class="stat-label">Global Exchanges</div>
-                    </div>
-                    <div class="stat-item2">
-                        <div class="stat-num" data-target="13" data-suffix="M+">0</div>
-                        <div class="stat-label">Daily Average Trades</div>
-                    </div>
-                    <div class="stat-item2">
-                        <div class="stat-num" data-target="45" data-suffix="+">0</div>
-                        <div class="stat-label">Currencies Traded In</div>
-                    </div>
-                    <div class="stat-item2">
-                        <div class="stat-num" data-target="6600" data-suffix="+">0</div>
-                        <div class="stat-label">Employees Globally</div>
-
-                    </div>
-                </div>
-
-                <div class="map-wrap">
-                    <canvas id="mapCanvas" width="680" height="360"></canvas>
-                </div>
+            <div class="map-wrap">
+                <img id="worldMapBg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt=""
+                    aria-hidden="true" style="
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(0.28);
+            opacity: 0.9;
+            pointer-events: none;
+        " />
+                <canvas id="mapCanvas" height="360" style="position:relative;z-index:1;"></canvas>
             </div>
 
         </div>
@@ -2084,12 +2098,7 @@
                 <!-- Card 1 -->
                 <div class="sol-card">
                     <div class="sol-icon">
-                        <!-- Gold / Commodity Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" width="80" height="80">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 16.5 12 21l9-4.5M3 12l9 4.5L21 12M3 7.5 12 12l9-4.5L12 3 3 7.5Z" />
-                        </svg>
+                        <img src="./asset/goldBarIcon.png" alt="Gold Bars Icon">
                     </div>
 
                     <h3>COMMODITIES <br> EXCHANGE</h3>
@@ -2246,8 +2255,8 @@
                             </svg>
                         </span>
                         <span class="ci-text">
-                            Global Headquarters<br>Erbil, Kurdistan Region
-                        </span>
+                            Head main Dubai<br>United Arab Emirates UAE
+                         </span>
                     </a>
 
                     <a class="contact-info-item" href="tel:+441234567890">
@@ -2320,10 +2329,10 @@
             <!-- Company -->
             <div class="footer-col">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Global Presences</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="global.html">Global Presences</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -2336,7 +2345,7 @@
             </div>
 
             <!-- Join Us -->
-            <div class="footer-socials-col">
+            <!-- <div class="footer-socials-col">
                 <h5>Join Us</h5>
                 <div class="social-icons">
                     <a href="#" title="YouTube">
@@ -2372,7 +2381,7 @@
                         </svg>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -2386,7 +2395,6 @@
         </div>
     </footer>
     <script>
-        // ─── DOT MAP SETUP ───────────────────────────────────────────
         function gen(x0, y0, x1, y1, count) {
             const pts = [];
             for (let i = 0; i < count; i++) {
@@ -2410,52 +2418,14 @@
         ];
 
         const hotspots = [
-
-            // Germany
-            {
-                x: 0.525,
-                y: 0.285,
-                label: "Germany"
-            },
-
-            // Netherlands
-            {
-                x: 0.495,
-                y: 0.255,
-                label: "Netherlands"
-            },
-
-            // Turkey
-            {
-                x: 0.615,
-                y: 0.355,
-                label: "Turkey"
-            },
-
-            // Iraq
-            {
-                x: 0.665,
-                y: 0.405,
-                label: "Iraq"
-            },
-
-            // UAE
-            {
-                x: 0.705,
-                y: 0.49,
-                label: "UAE"
-            },
-
-            // Afghanistan
-            {
-                x: 0.735,
-                y: 0.31,
-                label: "Afghanistan"
-            }
-
+            { x: 0.525, y: 0.285 },
+            { x: 0.495, y: 0.255 },
+            { x: 0.615, y: 0.355 },
+            { x: 0.665, y: 0.405 },
+            { x: 0.705, y: 0.49 },
+            { x: 0.735, y: 0.31 }
         ];
 
-        // ✅ Wait for DOM before accessing canvas
         document.addEventListener('DOMContentLoaded', () => {
 
             const canvas = document.getElementById('mapCanvas');
@@ -2463,132 +2433,91 @@
             const W = canvas.width, H = canvas.height;
             let frame = 0;
 
+            const PR = 201, PG = 168, PB = 76; // gold #C9A84C
+
             function drawMap(t) {
                 ctx.clearRect(0, 0, W, H);
 
+                // ── continent dots — soft blue-white ────────────────────
                 continentRegions.forEach((pt, i) => {
-                    const cx = pt.x * W;
-                    const cy = pt.y * H;
-                    const pulse = 0.7 + 0.3 * Math.sin(t * 0.03 + i * 0.4);
-                    const r = 2.2;
+                    const cx = pt.x * W, cy = pt.y * H;
+                    const p = 0.5 + 0.5 * Math.sin(t * 0.02 + i * 0.5);
 
-                    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 3);
-                    grd.addColorStop(0, `rgba(0,220,255,${0.18 * pulse})`);
-                    grd.addColorStop(1, 'rgba(0,220,255,0)');
+                    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 5);
+                    grd.addColorStop(0, `rgba(180,200,255,${0.28 * p})`);
+                    grd.addColorStop(1, 'rgba(100,140,255,0)');
                     ctx.beginPath();
-                    ctx.arc(cx, cy, r * 3, 0, Math.PI * 2);
+                    ctx.arc(cx, cy, 5, 0, Math.PI * 2);
                     ctx.fillStyle = grd;
                     ctx.fill();
 
                     ctx.beginPath();
-                    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(0,210,255,${0.55 * pulse})`;
+                    ctx.arc(cx, cy, 1.8, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(160,190,255,${0.5 * p})`;
                     ctx.fill();
                 });
 
-                // hotspots.forEach((pt, i) => {
-                //     const cx = pt.x * W;
-                //     const cy = pt.y * H;
-                //     const pulse = 0.6 + 0.4 * Math.sin(t * 0.05 + i * 1.2);
-
-                //     const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 14);
-                //     grd.addColorStop(0, `rgba(100,240,255,${0.35 * pulse})`);
-                //     grd.addColorStop(1, 'rgba(0,180,255,0)');
-                //     ctx.beginPath();
-                //     ctx.arc(cx, cy, 14, 0, Math.PI * 2);
-                //     ctx.fillStyle = grd;
-                //     ctx.fill();
-
-                //     ctx.beginPath();
-                //     ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
-                //     ctx.fillStyle = `rgba(180,245,255,${0.9 * pulse})`;
-                //     ctx.fill();
-
-                //     ctx.beginPath();
-                //     ctx.arc(cx, cy, 7 + 3 * pulse, 0, Math.PI * 2);
-                //     ctx.strokeStyle = `rgba(0,220,255,${0.25 * pulse})`;
-                //     ctx.lineWidth = 1;
-                //     ctx.stroke();
-                // });
-
+                // ── hotspot pins ────────────────────────────────────────
                 hotspots.forEach((pt, i) => {
+                    const cx = pt.x * W, cy = pt.y * H;
+                    const p = 0.5 + 0.5 * Math.sin(t * 0.05 + i * 1.2);
 
-                    const cx = pt.x * W;
-                    const cy = pt.y * H;
+                    // two staggered expanding rings
+                    const t1 = (t * 0.04 + i * 1.1) % (Math.PI * 2);
+                    const t2 = (t * 0.04 + i * 1.1 + Math.PI) % (Math.PI * 2);
 
-                    const pulse =
-                        0.6 + 0.4 * Math.sin(t * 0.05 + i * 1.2);
-
-                    // outer glow
-                    const grd = ctx.createRadialGradient(
-                        cx, cy, 0,
-                        cx, cy, 24
-                    );
-
-                    grd.addColorStop(
-                        0,
-                        `rgba(0,255,255,${0.45 * pulse})`
-                    );
-
-                    grd.addColorStop(
-                        1,
-                        'rgba(0,180,255,0)'
-                    );
-
+                    const r1 = 18 + 14 * (t1 / (Math.PI * 2));
+                    const a1 = 0.7 * (1 - (t1 / (Math.PI * 2)));
                     ctx.beginPath();
-                    ctx.arc(cx, cy, 24, 0, Math.PI * 2);
-
-                    ctx.fillStyle = grd;
-                    ctx.fill();
-
-                    // center dot
-                    ctx.beginPath();
-                    ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
-
-                    ctx.fillStyle =
-                        `rgba(255,255,255,${0.95 * pulse})`;
-
-                    ctx.fill();
-
-                    // animated ring
-                    ctx.beginPath();
-
-                    ctx.arc(
-                        cx,
-                        cy,
-                        10 + 5 * pulse,
-                        0,
-                        Math.PI * 2
-                    );
-
-                    ctx.strokeStyle =
-                        `rgba(0,255,255,${0.35 * pulse})`;
-
+                    ctx.arc(cx, cy, r1, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(${PR},${PG},${PB},${a1})`;
                     ctx.lineWidth = 1.5;
                     ctx.stroke();
 
-                    // ─────────────────────────────
-                    // COUNTRY NAME LABEL
-                    // ─────────────────────────────
+                    const r2 = 18 + 14 * (t2 / (Math.PI * 2));
+                    const a2 = 0.5 * (1 - (t2 / (Math.PI * 2)));
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, r2, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(255,220,100,${a2})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
 
-                    ctx.font = "bold 13px Arial";
+                    // wide ambient glow
+                    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 40);
+                    glow.addColorStop(0, `rgba(${PR},${PG},${PB},${0.22 * p})`);
+                    glow.addColorStop(0.4, `rgba(${PR},${PG},${PB},${0.08 * p})`);
+                    glow.addColorStop(1, 'rgba(201,168,76,0)');
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 40, 0, Math.PI * 2);
+                    ctx.fillStyle = glow;
+                    ctx.fill();
 
-                    // glowing text effect
-                    ctx.shadowColor = "rgba(0,255,255,0.9)";
-                    ctx.shadowBlur = 10;
+                    // inner halo
+                    const halo = ctx.createRadialGradient(cx, cy, 0, cx, cy, 12);
+                    halo.addColorStop(0, `rgba(255,240,160,${0.6 * p})`);
+                    halo.addColorStop(1, 'rgba(201,168,76,0)');
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 12, 0, Math.PI * 2);
+                    ctx.fillStyle = halo;
+                    ctx.fill();
 
-                    ctx.fillStyle = "rgba(220,255,255,0.95)";
+                    // core dot — white-gold radial gradient
+                    const core = ctx.createRadialGradient(cx - 1, cy - 1, 0, cx, cy, 5.5);
+                    core.addColorStop(0, 'rgba(255,255,220,1)');
+                    core.addColorStop(0.4, `rgba(${PR},${PG},${PB},1)`);
+                    core.addColorStop(1, 'rgba(160,120,30,0.8)');
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 5.5, 0, Math.PI * 2);
+                    ctx.fillStyle = core;
+                    ctx.fill();
 
-                    ctx.fillText(
-                        pt.label,
-                        cx + 12,
-                        cy - 12
-                    );
-
-                    // reset shadow
-                    ctx.shadowBlur = 0;
+                    // sparkle cross
+                    const sAlpha = 0.5 + 0.5 * Math.sin(t * 0.08 + i * 2.1);
+                    ctx.strokeStyle = `rgba(255,245,180,${sAlpha * 0.7})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.beginPath(); ctx.moveTo(cx - 8, cy); ctx.lineTo(cx + 8, cy); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(cx, cy - 8); ctx.lineTo(cx, cy + 8); ctx.stroke();
                 });
-
             }
 
             function animateMap() {
@@ -2599,13 +2528,12 @@
 
             animateMap();
 
-            // ─── COUNTER ANIMATION ────────────────────────────────────
+            // ── counter animation ───────────────────────────────────────
             const animateCounter = (counter) => {
                 const target = parseFloat(counter.dataset.target);
                 const suffix = counter.dataset.suffix || "";
                 let current = 0;
                 const increment = target / 100;
-
                 const update = () => {
                     current += increment;
                     if (current < target) {
@@ -2619,11 +2547,9 @@
                             : target + suffix;
                     }
                 };
-
                 update();
             };
 
-            // ─── INTERSECTION OBSERVER ────────────────────────────────
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -2635,15 +2561,13 @@
                         });
                     }
                 });
-            }, { threshold: 0.3 }); // ✅ lowered to 0.3 so it fires sooner
+            }, { threshold: 0.3 });
 
-            // ✅ Now also observes .wrap which wraps .left (stat-num items)
             document.querySelectorAll(".stats, .world-map, .wrap")
                 .forEach(section => observer.observe(section));
 
-        }); // end DOMContentLoaded
+        });
 
-        // ─── NAVBAR TOGGLE ────────────────────────────────────────────
         function toggleMenu() {
             document.getElementById("navLinks").classList.toggle("active");
         }

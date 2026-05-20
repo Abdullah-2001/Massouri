@@ -74,6 +74,13 @@
             box-shadow: 0 1px 8px rgba(0, 0, 0, .06);
         }
 
+
+        .logo-img {
+            width: 250px;
+            height: 100px;
+
+        }
+
         .language-dropdown select {
             border: 1px solid #d6d6d6;
             background: white;
@@ -183,7 +190,7 @@
             /* KEY: content moves to right side */
             padding: 80px;
             overflow: hidden;
-            background: url('./asset/Rectangle.jpg') center/cover no-repeat;
+            background: url('./asset/AboutusHero.png') center/cover no-repeat;
         }
 
         .hero::after {
@@ -229,10 +236,31 @@
 
         }
 
+        a.hero-btn {
+            text-decoration: none;
+        }
+
+        a.hero-btn2 {
+            text-decoration: none;
+        }
+
         .hero-btn {
-            background: #808694;
+            background: transparent;
             color: white;
-            border: none;
+            border: 1px solid #c7c7c7;
+            padding: 14px 34px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .hero-btn2 {
+            background: #03133d;
+            font-family: Arial, Helvetica, sans-serif !important;
+            color: #ffffff;
+            border: 1px solid #c7c7c7;
             padding: 14px 34px;
             border-radius: 6px;
             font-size: 14px;
@@ -242,6 +270,10 @@
         }
 
         .hero-btn:hover {
+            background: #12285f;
+        }
+
+        .hero-btn2:hover {
             background: #12285f;
         }
 
@@ -464,11 +496,11 @@
         }
 
         .capital-number {
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Merriweather", serif;
             font-size: 88px;
             line-height: 1;
             font-weight: 800;
-            color: #08153a;
+            color: #606267e2;
             margin-bottom: 34px;
             letter-spacing: -4px;
         }
@@ -1166,7 +1198,7 @@
 
         .outcomes-strip {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             border-top: 1px solid rgba(8, 21, 58, 0.15);
             margin-top: 35px;
         }
@@ -2163,7 +2195,7 @@
     <!-- NAV -->
     <nav class="navbar">
         <div class="nav-logo">
-            <img src="./asset/logo.png" alt="Massouri Investments">
+            <img class="logo-img" src="./asset/logo.png" alt="Massouri Investments">
         </div>
 
         <!-- Hamburger -->
@@ -2182,7 +2214,7 @@
                 <select>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
-                    <option value="fr">FR</option>
+                    <option value="fr">NL</option>
                 </select>
             </li>
         </ul>
@@ -2206,7 +2238,7 @@
                 and long term value creation.
             </p>
 
-            <button class="hero-btn">Contact Us</button>
+            <a href="contactUs.html" class="hero-btn">CONTACT US</a>
         </div>
     </section>
 
@@ -2250,7 +2282,7 @@
             <div class="global-right">
 
                 <p>
-                    Massouri Investments is a global investment firm founded in 2008 and headquartered in Erbil,
+                    Massouri Investments is a Global headquarters Dubai, United Arab Emirates,
                     Kurdistan Region. It specializes in institutional-grade strategies across equities,
                     alternative assets, and multi-asset portfolios. Our approach is built on deep research,
                     rigorous risk management, and long-term market perspective.
@@ -2262,9 +2294,8 @@
                     through disciplined execution, transparent governance, and strong accountability.
                     Our goal is to deliver consistent performance while protecting client capital across market cycles.
                 </p>
-
-                <button>Begin a Conversation</button>
-
+                <a href="contactUs.html" class="hero-btn2">Begin a Conversation</a>
+                <!-- <a href="/contactUs.html"></a> -->
             </div>
 
         </div>
@@ -2357,11 +2388,10 @@
     </section>
 
     <section class="performance">
-        <div style="max-width:1200px; margin:0 auto;">
+        <div style="margin:0 auto;">
             <h2 class="section-title">Performance</h2>
-            <p class="section-sub">Track record built over 15 years across full market cycles, bull markets,
-                corrections, and black swan events.</p>
-
+            <p class="section-sub">
+                Track record built over 7+ years across full market cycles, bull markets, corrections.</p>
             <div class="perf-grid">
 
                 <!-- Card 1 -->
@@ -2374,9 +2404,9 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21H3" />
                         </svg>
                     </div>
-                    <div class="metric">23.4%</div>
+                    <div class="metric">60.2%</div>
                     <div class="metric-label">Average Annualized Return</div>
-                    <div class="metric-desc">3-Year Track Record</div>
+                    <div class="metric-desc">7 Year Track Record</div>
                 </div>
 
                 <!-- Card 2 -->
@@ -2392,7 +2422,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16 15v-4" />
                         </svg>
                     </div>
-                    <div class="metric">1.87</div>
+                    <div class="metric">2.5</div>
                     <div class="metric-label">Sharpe Ratio</div>
                     <div class="metric-desc">Risk-Adjusted Performance</div>
                 </div>
@@ -2409,7 +2439,7 @@
                                 d="M9.5 12a2.5 2.5 0 115 0 2.5 2.5 0 01-5 0z" />
                         </svg>
                     </div>
-                    <div class="metric">98%</div>
+                    <div class="metric">96%</div>
                     <div class="metric-label">Client Retention Rate</div>
                     <div class="metric-desc">Year-Over-Year</div>
                 </div>
@@ -2572,10 +2602,10 @@
                     <span>FEE STRUCTURE</span>
                 </div>
 
-                <div class="strip-item">
+                <!-- <div class="strip-item">
                     <h4>REAL-TIME</h4>
                     <span>CLIENT PORTAL</span>
-                </div>
+                </div> -->
 
                 <div class="strip-item">
                     <h4>REGULATED</h4>
@@ -2621,7 +2651,7 @@
                             </svg>
                         </span>
                         <span class="ci-text">
-                            Global Headquarters<br>Erbil, Kurdistan Region
+                            Head main Dubai<br>United Arab Emirates UAE
                         </span>
                     </a>
 
@@ -2697,10 +2727,10 @@
             <!-- Company -->
             <div class="footer-col">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Global Presences</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="global.html">Global Presences</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -2713,7 +2743,7 @@
             </div>
 
             <!-- Join Us -->
-            <div class="footer-socials-col">
+            <!-- <div class="footer-socials-col">
                 <h5>Join Us</h5>
                 <div class="social-icons">
                     <a href="#" title="YouTube">
@@ -2749,7 +2779,7 @@
                         </svg>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
