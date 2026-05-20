@@ -1882,10 +1882,10 @@
         }
 
         #map-container {
-            background-color: #bcc8cf;
+            background-color: #0a1634;
             position: relative;
-            width: 98vw;
-            max-width: 1400px;
+            width: 95vw;
+            /* max-width: 1400px; */
         }
 
         svg#worldmap {
@@ -2103,6 +2103,22 @@
             footer {
                 padding: 40px 24px 20px;
             }
+        }
+
+        @keyframes border-pulse {
+
+            0%,
+            100% {
+                stroke-opacity: 1;
+            }
+
+            50% {
+                stroke-opacity: 0.5;
+            }
+        }
+
+        .unified-border {
+            animation: border-pulse 2.6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -2652,339 +2668,149 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 
     <script>
-        // document.addEventListener('DOMContentLoaded', () => {
 
-        //     const canvas = document.getElementById('mapCanvas');
-        //     const ctx = canvas.getContext('2d');
-        //     const W = canvas.width, H = canvas.height;
-        //     let frame = 0;
+        function animateCounter(counter) {
+            const target = parseFloat(counter.dataset.target);
+            const suffix = counter.dataset.suffix || "";
+            const isDecimal = target % 1 !== 0;
+            const duration = 2000; // ms
+            const steps = 100;
+            const interval = duration / steps;
+            let current = 0;
+            const increment = target / steps;
 
-        //     const PR = 201, PG = 168, PB = 76;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.innerText = isDecimal
+                    ? current.toFixed(1) + suffix
+                    : Math.ceil(current) + suffix;
+            }, interval);
+        }
 
-        //     // NO continent dots at all — removed completely
-        //     const hotspots = [
-        //         { x: 0.505, y: 0.220, label: "Germany", labelDir: "top" },
-        //         { x: 0.480, y: 0.195, label: "Holland", labelDir: "left" },
-        //         { x: 0.598, y: 0.305, label: "Turkey", labelDir: "top" },
-        //         { x: 0.645, y: 0.375, label: "Iraq", labelDir: "right" },
-        //         { x: 0.682, y: 0.445, label: "UAE", labelDir: "right" },
-        //         { x: 0.718, y: 0.260, label: "Afghanistan", labelDir: "top" }
-        //     ];
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll(".counter").forEach(counter => {
+                        if (!counter.classList.contains("counted")) {
+                            counter.classList.add("counted");
+                            animateCounter(counter);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
 
-        //     function drawLabel(ctx, label, cx, cy, dir, PR, PG, PB) {
-        //         ctx.save();
-        //         ctx.font = "700 12px 'Barlow', Arial, sans-serif";
-        //         const tw = ctx.measureText(label).width;
-        //         const pw = tw + 16, ph = 22, r = 6;
+        document.querySelectorAll(".stats").forEach(section => observer.observe(section));
+        // Europe group — unified single border
+        const EUROPE = new Set([
+            "DEU", "NLD", "FRA", "GBR", "ESP", "ITA", "POL", "BEL", "AUT", "CHE",
+            "CZE", "HUN", "SVK", "SVN", "HRV", "BGR", "ROU", "SRB", "DNK", "SWE",
+            "NOR", "FIN", "PRT", "GRC", "UKR", "BLR", "LTU", "LVA", "EST", "MDA",
+            "ALB", "MKD", "MNE", "BIH", "LUX", "IRL"
+        ]);
 
-        //         let bx, by;
-        //         const gap = 18;
+        // Countries with their own individual border
+        const SEPARATE = new Set(["TUR", "ARE", "USA", "JPN", "NZL"]);
 
-        //         if (dir === "top") { bx = cx - pw / 2; by = cy - gap - ph; }
-        //         if (dir === "right") { bx = cx + gap; by = cy - ph / 2; }
-        //         if (dir === "left") { bx = cx - gap - pw; by = cy - ph / 2; }
-        //         if (dir === "bottom") { bx = cx - pw / 2; by = cy + gap; }
+        const ALL_HIGHLIGHTS = new Set([...EUROPE, ...SEPARATE]);
 
-        //         // connector dot line
-        //         const lx = bx + (dir === "right" ? 0 : dir === "left" ? pw : pw / 2);
-        //         const ly = by + (dir === "top" ? ph : dir === "bottom" ? 0 : ph / 2);
-        //         ctx.beginPath();
-        //         ctx.moveTo(cx, cy);
-        //         ctx.lineTo(lx, ly);
-        //         ctx.strokeStyle = `rgba(${PR},${PG},${PB},0.5)`;
-        //         ctx.lineWidth = 0.8;
-        //         ctx.setLineDash([3, 3]);
-        //         ctx.stroke();
-        //         ctx.setLineDash([]);
-
-        //         // pill shadow
-        //         ctx.shadowColor = `rgba(0,0,0,0.4)`;
-        //         ctx.shadowBlur = 8;
-
-        //         // pill bg
-        //         ctx.beginPath();
-        //         ctx.roundRect(bx, by, pw, ph, r);
-        //         ctx.fillStyle = `rgba(8,16,42,0.88)`;
-        //         ctx.fill();
-        //         ctx.shadowBlur = 0;
-
-        //         // gold border
-        //         ctx.beginPath();
-        //         ctx.roundRect(bx, by, pw, ph, r);
-        //         ctx.strokeStyle = `rgba(${PR},${PG},${PB},0.85)`;
-        //         ctx.lineWidth = 1;
-        //         ctx.stroke();
-
-        //         // top gold accent bar
-        //         ctx.beginPath();
-        //         ctx.roundRect(bx + 4, by + 2, pw - 8, 2.5, 1);
-        //         ctx.fillStyle = `rgba(${PR},${PG},${PB},0.6)`;
-        //         ctx.fill();
-
-        //         // text
-        //         ctx.fillStyle = `rgba(255,242,190,1)`;
-        //         ctx.fillText(label, bx + 8, by + ph - 6);
-
-        //         ctx.restore();
-        //     }
-
-        //     function drawMap(t) {
-        //         ctx.clearRect(0, 0, W, H);
-
-        //         hotspots.forEach((pt, i) => {
-        //             const cx = pt.x * W, cy = pt.y * H;
-        //             const p = 0.5 + 0.5 * Math.sin(t * 0.05 + i * 1.2);
-
-        //             // two staggered expanding rings
-        //             const t1 = (t * 0.04 + i * 1.1) % (Math.PI * 2);
-        //             const t2 = (t * 0.04 + i * 1.1 + Math.PI) % (Math.PI * 2);
-
-        //             const r1 = 16 + 14 * (t1 / (Math.PI * 2));
-        //             const a1 = 0.75 * (1 - (t1 / (Math.PI * 2)));
-        //             ctx.beginPath();
-        //             ctx.arc(cx, cy, r1, 0, Math.PI * 2);
-        //             ctx.strokeStyle = `rgba(${PR},${PG},${PB},${a1})`;
-        //             ctx.lineWidth = 1.5;
-        //             ctx.stroke();
-
-        //             const r2 = 16 + 14 * (t2 / (Math.PI * 2));
-        //             const a2 = 0.5 * (1 - (t2 / (Math.PI * 2)));
-        //             ctx.beginPath();
-        //             ctx.arc(cx, cy, r2, 0, Math.PI * 2);
-        //             ctx.strokeStyle = `rgba(255,220,100,${a2})`;
-        //             ctx.lineWidth = 1;
-        //             ctx.stroke();
-
-        //             // wide ambient glow
-        //             const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 38);
-        //             glow.addColorStop(0, `rgba(${PR},${PG},${PB},${0.25 * p})`);
-        //             glow.addColorStop(0.5, `rgba(${PR},${PG},${PB},${0.08 * p})`);
-        //             glow.addColorStop(1, 'rgba(201,168,76,0)');
-        //             ctx.beginPath();
-        //             ctx.arc(cx, cy, 38, 0, Math.PI * 2);
-        //             ctx.fillStyle = glow;
-        //             ctx.fill();
-
-        //             // inner halo
-        //             const halo = ctx.createRadialGradient(cx, cy, 0, cx, cy, 11);
-        //             halo.addColorStop(0, `rgba(255,240,160,${0.65 * p})`);
-        //             halo.addColorStop(1, 'rgba(201,168,76,0)');
-        //             ctx.beginPath();
-        //             ctx.arc(cx, cy, 11, 0, Math.PI * 2);
-        //             ctx.fillStyle = halo;
-        //             ctx.fill();
-
-        //             // core dot
-        //             const core = ctx.createRadialGradient(cx - 1, cy - 1, 0, cx, cy, 5.5);
-        //             core.addColorStop(0, 'rgba(255,255,230,1)');
-        //             core.addColorStop(0.4, `rgba(${PR},${PG},${PB},1)`);
-        //             core.addColorStop(1, 'rgba(140,100,20,0.85)');
-        //             ctx.beginPath();
-        //             ctx.arc(cx, cy, 5.5, 0, Math.PI * 2);
-        //             ctx.fillStyle = core;
-        //             ctx.fill();
-
-        //             // sparkle cross
-        //             const sAlpha = 0.4 + 0.6 * Math.sin(t * 0.08 + i * 2.1);
-        //             ctx.strokeStyle = `rgba(255,248,190,${sAlpha * 0.75})`;
-        //             ctx.lineWidth = 0.8;
-        //             ctx.beginPath(); ctx.moveTo(cx - 9, cy); ctx.lineTo(cx + 9, cy); ctx.stroke();
-        //             ctx.beginPath(); ctx.moveTo(cx, cy - 9); ctx.lineTo(cx, cy + 9); ctx.stroke();
-
-        //             // label
-        //             drawLabel(ctx, pt.label, cx, cy, pt.labelDir, PR, PG, PB);
-        //         });
-        //     }
-
-        //     function animateMap() {
-        //         frame++;
-        //         drawMap(frame);
-        //         requestAnimationFrame(animateMap);
-        //     }
-
-        //     animateMap();
-
-        //     const animateCounter = (counter) => {
-        //         const target = parseFloat(counter.dataset.target);
-        //         const suffix = counter.dataset.suffix || "";
-        //         let current = 0;
-        //         const increment = target / 100;
-        //         const update = () => {
-        //             current += increment;
-        //             if (current < target) {
-        //                 counter.innerText = target % 1 !== 0
-        //                     ? current.toFixed(1) + suffix
-        //                     : Math.ceil(current) + suffix;
-        //                 requestAnimationFrame(update);
-        //             } else {
-        //                 counter.innerText = target % 1 !== 0
-        //                     ? target.toFixed(1) + suffix
-        //                     : target + suffix;
-        //             }
-        //         };
-        //         update();
-        //     };
-
-        //     const observer = new IntersectionObserver((entries) => {
-        //         entries.forEach(entry => {
-        //             if (entry.isIntersecting) {
-        //                 entry.target.querySelectorAll(".counter, .stat-num").forEach(counter => {
-        //                     if (!counter.classList.contains("counted")) {
-        //                         counter.classList.add("counted");
-        //                         animateCounter(counter);
-        //                     }
-        //                 });
-        //             }
-        //         });
-        //     }, { threshold: 0.3 });
-
-        //     document.querySelectorAll(".stats, .world-map, .wrap")
-        //         .forEach(section => observer.observe(section));
-        // });
-
-        const HIGHLIGHTS = [
-            { iso: "DEU", code: "DE" },
-            { iso: "NLD", code: "NL" },
-            { iso: "TUR", code: "TR" },
-            { iso: "IRQ", code: "IQ" },
-            { iso: "ARE", code: "AE" },
-            { iso: "AFG", code: "AF" },
-            // Europe neighbors
-            { iso: "FRA", code: "FR" },
-            { iso: "GBR", code: "GB" },
-            { iso: "ESP", code: "ES" },
-            { iso: "ITA", code: "IT" },
-            { iso: "POL", code: "PL" },
-            { iso: "BEL", code: "BE" },
-            { iso: "AUT", code: "AT" },
-            { iso: "CHE", code: "CH" },
-            { iso: "CZE", code: "CZ" },
-            { iso: "HUN", code: "HU" },
-            { iso: "SVK", code: "SK" },
-            { iso: "SVN", code: "SI" },
-            { iso: "HRV", code: "HR" },
-            { iso: "BGR", code: "BG" },
-            { iso: "ROU", code: "RO" },
-            { iso: "SRB", code: "RS" },
-            { iso: "DNK", code: "DK" },
-            { iso: "SWE", code: "SE" },
-            { iso: "NOR", code: "NO" },
-            { iso: "FIN", code: "FI" },
-            { iso: "PRT", code: "PT" },
-            { iso: "GRC", code: "GR" },
-            { iso: "UKR", code: "UA" },
-            { iso: "BLR", code: "BY" },
-            { iso: "LTU", code: "LT" },
-            { iso: "LVA", code: "LV" },
-            { iso: "EST", code: "EE" },
-            { iso: "MDA", code: "MD" },
-            { iso: "ALB", code: "AL" },
-            { iso: "MKD", code: "MK" },
-            { iso: "MNE", code: "ME" },
-            { iso: "BIH", code: "BA" },
-            { iso: "LUX", code: "LU" },
-            { iso: "IRL", code: "IE" },
-        ];
-
-        const GOLD = "201,168,76";
         const projection = d3.geoNaturalEarth1().scale(153).translate([480, 250]);
         const path = d3.geoPath().projection(projection);
 
         const layer = d3.select("#countries-layer");
         const bLayer = d3.select("#border-layer");
-        const lLayer = d3.select("#labels-layer");
 
         const numToIso = {
-            840: "USA", 826: "GBR", 276: "DEU", 250: "FRA", 392: "JPN",
-            554: "NZL", 36: "AUS", 124: "CAN",
-            76: "BRA", 643: "RUS", 356: "IND", 156: "CHN", 710: "ZAF",
-            484: "MEX", 380: "ITA", 724: "ESP", 620: "PRT", 56: "BEL",
-            528: "NLD", 752: "SWE", 578: "NOR", 246: "FIN", 208: "DNK",
-            40: "AUT", 756: "CHE", 616: "POL", 348: "HUN", 203: "CZE",
-            100: "BGR", 642: "ROU", 804: "UKR", 112: "BLR", 268: "GEO",
-            792: "TUR", 364: "IRN", 682: "SAU", 400: "JOR", 368: "IRQ",
-            760: "SYR", 422: "LBN", 376: "ISR", 818: "EGY", 12: "DZA",
-            504: "MAR", 788: "TUN", 434: "LBY", 231: "ETH", 404: "KEN",
-            800: "UGA", 834: "TZA", 508: "MOZ", 716: "ZWE", 566: "NGA",
-            288: "GHA", 384: "CIV", 204: "BEN", 854: "BFA", 694: "SLE",
-            324: "GIN", 466: "MLI", 562: "NER", 148: "TCD", 729: "SDN",
-            706: "SOM", 862: "VEN", 170: "COL", 604: "PER", 152: "CHL",
-            68: "BOL", 600: "PRY", 858: "URY", 32: "ARG", 410: "KOR",
-            408: "PRK", 418: "LAO", 116: "KHM", 764: "THA", 704: "VNM",
-            104: "MMR", 50: "BGD", 144: "LKA", 586: "PAK", 4: "AFG",
-            398: "KAZ", 860: "UZB", 795: "TKM", 762: "TJK", 417: "KGZ",
-            496: "MNG", 458: "MYS", 702: "SGP", 360: "IDN", 608: "PHL",
-            178: "COG", 180: "COD", 516: "NAM", 72: "BWA", 454: "MWI",
-            646: "RWA", 108: "BDI", 686: "SEN", 242: "FJI", 598: "PNG",
-            784: "ARE", 703: "SVK", 705: "SVN", 191: "HRV", 688: "SRB",
-            807: "MKD", 499: "MNE", 70: "BIH", 440: "LTU", 428: "LVA",
-            233: "EST", 498: "MDA", 8: "ALB", 442: "LUX", 372: "IRL",
+            840: "USA", 826: "GBR", 276: "DEU", 250: "FRA", 392: "JPN", 554: "NZL", 36: "AUS", 124: "CAN",
+            76: "BRA", 643: "RUS", 356: "IND", 156: "CHN", 710: "ZAF", 484: "MEX", 380: "ITA", 724: "ESP",
+            620: "PRT", 56: "BEL", 528: "NLD", 752: "SWE", 578: "NOR", 246: "FIN", 208: "DNK", 40: "AUT",
+            756: "CHE", 616: "POL", 348: "HUN", 203: "CZE", 100: "BGR", 642: "ROU", 804: "UKR", 112: "BLR",
+            268: "GEO", 792: "TUR", 364: "IRN", 682: "SAU", 400: "JOR", 368: "IRQ", 760: "SYR", 422: "LBN",
+            376: "ISR", 818: "EGY", 12: "DZA", 504: "MAR", 788: "TUN", 434: "LBY", 231: "ETH", 404: "KEN",
+            800: "UGA", 834: "TZA", 508: "MOZ", 716: "ZWE", 566: "NGA", 288: "GHA", 384: "CIV", 204: "BEN",
+            854: "BFA", 694: "SLE", 324: "GIN", 466: "MLI", 562: "NER", 148: "TCD", 729: "SDN", 706: "SOM",
+            862: "VEN", 170: "COL", 604: "PER", 152: "CHL", 68: "BOL", 600: "PRY", 858: "URY", 32: "ARG",
+            410: "KOR", 408: "PRK", 418: "LAO", 116: "KHM", 764: "THA", 704: "VNM", 104: "MMR", 50: "BGD",
+            144: "LKA", 586: "PAK", 4: "AFG", 398: "KAZ", 860: "UZB", 795: "TKM", 762: "TJK", 417: "KGZ",
+            496: "MNG", 458: "MYS", 702: "SGP", 360: "IDN", 608: "PHL", 178: "COG", 180: "COD", 516: "NAM",
+            72: "BWA", 454: "MWI", 646: "RWA", 108: "BDI", 686: "SEN", 242: "FJI", 598: "PNG", 784: "ARE",
+            703: "SVK", 705: "SVN", 191: "HRV", 688: "SRB", 807: "MKD", 499: "MNE", 70: "BIH", 440: "LTU",
+            428: "LVA", 233: "EST", 498: "MDA", 8: "ALB", 442: "LUX", 372: "IRL",
         };
 
-        const isoToCode = {};
-        HIGHLIGHTS.forEach(h => { isoToCode[h.iso] = h.code; });
-
-        const highlightSet = new Set(HIGHLIGHTS.map(h => h.iso));
+        // Lighter navy for highlighted countries — clearly distinct from background
+        const FILL_HIGHLIGHT = "#1e3a6e";  // medium navy blue
+        const FILL_OTHER = "#0f2144";  // dark navy (background tone)
+        const STROKE_OTHER = "#1a3260";
 
         fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
             .then(r => r.json())
             .then(world => {
                 const countries = topojson.feature(world, world.objects.countries);
 
+                // Base fills
                 layer.selectAll("path")
                     .data(countries.features)
                     .join("path")
-                    .attr("class", "country")
                     .attr("d", path)
                     .attr("fill", d => {
                         const iso = numToIso[+d.id] || "";
-                        return highlightSet.has(iso) ? `rgba(${GOLD},0.22)` : "#1a2d55";
+                        return ALL_HIGHLIGHTS.has(iso) ? FILL_HIGHLIGHT : FILL_OTHER;
                     })
                     .attr("stroke", d => {
                         const iso = numToIso[+d.id] || "";
-                        return highlightSet.has(iso) ? "none" : "#2e4a82";
+                        return ALL_HIGHLIGHTS.has(iso) ? "none" : STROKE_OTHER;
                     })
                     .attr("stroke-width", 0.4);
 
-                countries.features.forEach((d, i) => {
-                    const iso = numToIso[+d.id] || "";
-                    if (!highlightSet.has(iso)) return;
-                    const pathD = path(d);
-                    const delay = (i * 137) % 1400;
-
+                // Helper: draw white border for a given path string
+                function drawWhiteBorder(pd) {
+                    // soft glow
                     bLayer.append("path")
-                        .attr("d", pathD)
+                        .attr("d", pd)
                         .attr("fill", "none")
-                        .attr("stroke", `#FFFFFF`)
-                        .attr("stroke-width", 1.4)
-                        .attr("filter", "url(#soft-glow)")
-                        .attr("class", "border-blink")
-                        .style("animation-delay", `-${delay}ms`);
+                        .attr("stroke", "rgba(255,255,255,0.35)")
+                        .attr("stroke-width", 6)
+                        .attr("filter", "url(#white-glow)")
+                        .attr("class", "unified-border");
+                    // crisp white line
+                    bLayer.append("path")
+                        .attr("d", pd)
+                        .attr("fill", "none")
+                        .attr("stroke", "rgba(255,255,255,0.95)")
+                        .attr("stroke-width", 1.6)
+                        .attr("stroke-linejoin", "round")
+                        .attr("class", "unified-border");
+                }
 
-                    // 2-letter code at centroid
-                    const centroid = path.centroid(d);
-                    if (centroid && !isNaN(centroid[0]) && !isNaN(centroid[1])) {
-                        const code = isoToCode[iso];
-                        if (code) {
-                            lLayer.append("text")
-                                .attr("x", centroid[0])
-                                .attr("y", centroid[1])
-                                .attr("text-anchor", "middle")
-                                .attr("dominant-baseline", "central")
-                                .attr("fill", "#fff4c7")
-                                .attr("font-size", 4)
-                                .attr("font-family", "Rajdhani,sans-serif")
-                                .attr("font-weight", "700")
-                                .attr("pointer-events", "none")
-                                .text(code);
-                        }
+                // --- Europe: single unified outer border ---
+                const europeIds = new Set(
+                    countries.features
+                        .filter(d => EUROPE.has(numToIso[+d.id] || ""))
+                        .map(d => +d.id)
+                );
+
+                const unifiedMesh = topojson.mesh(
+                    world, world.objects.countries,
+                    (a, b) => {
+                        const aIn = europeIds.has(+a.id);
+                        const bIn = europeIds.has(+b.id);
+                        return (aIn && !bIn) || (!aIn && bIn) || (aIn && a === b);
                     }
+                );
+                drawWhiteBorder(path(unifiedMesh));
+
+                // --- Separate countries: individual borders ---
+                SEPARATE.forEach(targetIso => {
+                    const feat = countries.features.find(d => numToIso[+d.id] === targetIso);
+                    if (!feat) return;
+                    drawWhiteBorder(path(feat));
                 });
             });
-
-        function toggleMenu() {
-            document.getElementById("navLinks").classList.toggle("active");
-        }
     </script>
 </body>
 
