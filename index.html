@@ -467,6 +467,185 @@
                 0 4px 12px rgba(0, 0, 0, 0.04);
         }
 
+
+        @media (min-width: 1400px) {
+            .about {
+                max-width: 1320px;
+                grid-template-columns: 1fr 600px;
+                gap: 100px;
+            }
+        }
+
+        /* ── Standard Laptop 1024px–1399px ──────────────────────── */
+        @media (max-width: 1399px) {
+            .about {
+                max-width: 1100px;
+                grid-template-columns: 1fr 460px;
+                gap: 60px;
+            }
+
+            .about-text h2 {
+                font-size: clamp(42px, 5vw, 66px);
+            }
+
+            .about-text p {
+                font-size: 17px;
+            }
+
+            .about-image img {
+                height: 480px;
+            }
+        }
+
+        /* ── Small Laptop / Large Tablet Landscape 768px–1023px ─── */
+        @media (max-width: 1023px) {
+            .about-wrapper {
+                padding: 80px 24px;
+            }
+
+            .about {
+                grid-template-columns: 1fr 380px;
+                gap: 40px;
+            }
+
+            .about-text h2 {
+                font-size: clamp(36px, 5vw, 56px);
+                letter-spacing: -1px;
+            }
+
+            .about-text p {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .about-primary,
+            .about-secondary {
+                padding: 16px 36px;
+                font-size: 15px;
+            }
+
+            .about-image img {
+                height: 420px;
+                border-radius: 28px;
+            }
+        }
+
+        /* ── Tablet Portrait 600px–767px ────────────────────────── */
+        @media (max-width: 767px) {
+            .about-wrapper {
+                padding: 60px 20px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text h2 {
+                font-size: clamp(38px, 8vw, 56px);
+                letter-spacing: -0.5px;
+                line-height: 1.05;
+            }
+
+            .about-text p {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .about-btns {
+                flex-wrap: wrap;
+                gap: 14px;
+                margin-top: 30px;
+            }
+
+            .about-primary,
+            .about-secondary {
+                padding: 15px 32px;
+                font-size: 15px;
+                flex: 1;
+                text-align: center;
+                min-width: 140px;
+            }
+
+            /* image moves below text on tablet */
+            .about-image {
+                order: 2;
+            }
+
+            .about-text {
+                order: 1;
+            }
+
+            .about-image img {
+                height: 380px;
+                border-radius: 24px;
+            }
+        }
+
+        /* ── Mobile 480px–599px ──────────────────────────────────── */
+        @media (max-width: 599px) {
+            .about-wrapper {
+                padding: 50px 16px;
+            }
+
+            .about-text h2 {
+                font-size: clamp(34px, 9vw, 48px);
+                letter-spacing: -0.5px;
+            }
+
+            .about-text p {
+                font-size: 15px;
+                line-height: 1.75;
+            }
+
+            .about-btns {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .about-primary,
+            .about-secondary {
+                padding: 16px 24px;
+                font-size: 15px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .about-image img {
+                height: 320px;
+                border-radius: 20px;
+            }
+        }
+
+        /* ── Small Mobile 320px–479px ───────────────────────────── */
+        @media (max-width: 479px) {
+            .about-wrapper {
+                padding: 40px 14px;
+            }
+
+            .about-text h2 {
+                font-size: clamp(30px, 10vw, 42px);
+                margin-bottom: 14px;
+            }
+
+            .about-text p {
+                font-size: 14px;
+            }
+
+            .about-image img {
+                height: 260px;
+                border-radius: 16px;
+            }
+        }
+
+        /* ── Zoom compensation (75%–125%) ───────────────────────── */
+        @media (min-resolution: 1.25dppx) and (max-width: 1600px) {
+            .about {
+                grid-template-columns: 1fr 420px;
+                gap: 50px;
+            }
+        }
+
         /* =========================
    STATS SECTION
 ========================= */
@@ -2106,9 +2285,7 @@
                     <div class="card-line"></div>
 
                     <p>
-                        Investment opportunities in
-                        energy, metals, and
-                        agricultural markets.
+                        Investment opportunities in Raw Metals, energy and agricultural markets
                     </p>
 
                     <a href="#" class="btn-sm">Learn More</a>
@@ -2131,9 +2308,8 @@
 
                     </div>
                     <p>
-                        Strategic access to global
-                        currency markets with
-                        disciplined risk management.
+                        We identify opportunities across global foreign exchange markets through macroeconomic analysis,
+                        monetary policy trends, and institutional trading strategies
                     </p>
 
 
@@ -2255,11 +2431,11 @@
                             </svg>
                         </span>
                         <span class="ci-text">
-                            Head main Dubai<br>United Arab Emirates UAE
-                         </span>
+                            Global Headquarters<br>Dubai, United Arab Emirates
+                        </span>
                     </a>
 
-                    <a class="contact-info-item" href="tel:+441234567890">
+                    <a class="contact-info-item" href="tel:+31686355651">
                         <span class="ci-icon">
                             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
                                 viewBox="0 0 24 24">
@@ -2267,7 +2443,7 @@
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.95 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.87 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
                         </span>
-                        <span class="ci-text">+44 123 654 7890</span>
+                        <span class="ci-text">+31 686 355 651</span>
                     </a>
                 </div>
             </div>
