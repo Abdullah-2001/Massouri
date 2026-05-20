@@ -1615,25 +1615,61 @@
             }
 
             .footer-main {
-                grid-template-columns: 1fr;
-                padding: 50px 22px 40px;
-                gap: 42px;
+                display: flex;
+                flex-direction: column;
+                gap: 38px;
+                padding: 45px 24px 35px;
             }
 
+            /* LOGO SECTION */
+
             .footer-logo-wrap {
-                align-items: flex-start;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
             }
 
             .footer-logo-mark {
-                width: 180px;
+                width: 250px;
+                max-width: 100%;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+
+            /* FOOTER COLUMNS */
+
+            .footer-col {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-col h5 {
+                font-size: 16px;
+                margin-bottom: 18px;
+            }
+
+            .footer-col ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
             }
 
             .footer-col ul li {
-                margin-bottom: 12px;
+                margin-bottom: 14px;
             }
 
             .footer-col ul li a {
-                font-size: 14px;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            /* SOCIALS */
+
+            .footer-socials-col {
+                text-align: center;
             }
 
             .footer-socials-col h5 {
@@ -1641,27 +1677,15 @@
             }
 
             .social-icons {
-                gap: 12px;
+                display: flex;
+                justify-content: center;
+                gap: 14px;
+                flex-wrap: wrap;
             }
 
             .social-icons a {
-                width: 38px;
-                height: 38px;
-            }
-
-            .footer-bottom {
-                padding: 22px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-bottom-links {
-                gap: 16px;
-            }
-
-            .footer-bottom span,
-            .footer-bottom-links a {
-                font-size: 13px;
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -1784,6 +1808,86 @@
             color: #08153a;
             max-width: 380px;
             font-weight: 500;
+        }
+
+
+        @media (max-width: 991px) {
+
+            .frameworks-top {
+                padding: 0 40px 40px;
+                gap: 35px;
+            }
+
+            .frameworks-title h2 {
+                font-size: clamp(38px, 8vw, 70px);
+            }
+
+            .frameworks-text {
+                max-width: 100%;
+            }
+
+            .frameworks-text p {
+                font-size: 17px;
+            }
+        }
+
+        /* =========================
+   MOBILE
+========================= */
+
+        @media (max-width: 767px) {
+
+            .frameworks-section {
+                padding-top: 30px;
+            }
+
+            .frameworks-top {
+                flex-direction: column;
+                padding: 0 22px 30px;
+                gap: 24px;
+            }
+
+            .frameworks-title,
+            .frameworks-text {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .frameworks-title h2 {
+                font-size: clamp(34px, 12vw, 56px);
+                line-height: 0.95;
+                letter-spacing: -1px;
+            }
+
+            .frameworks-text p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+
+            .frameworks-nav {
+                justify-content: flex-start;
+                gap: 20px;
+            }
+        }
+
+        /* =========================
+   SMALL MOBILE
+========================= */
+
+        @media (max-width: 480px) {
+
+            .frameworks-top {
+                padding: 0 18px 25px;
+            }
+
+            .frameworks-title h2 {
+                font-size: 48px;
+            }
+
+            .frameworks-text p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
         }
 
         /* =========================================
@@ -2044,7 +2148,7 @@
             .frameworks-title h2,
             .strategy-left h2,
             .strategy-light-left h2 {
-                font-size: 54px;
+                font-size: 40px;
                 letter-spacing: -2px;
             }
 
@@ -2104,7 +2208,7 @@
             <p>
                 Our investment approach is built on a global perspective, allowing us to identify opportunities across
                 major financial markets including the United States, Europe, the Middle East, and Asia. Through
-                disciplined execution and institutional-grade risk management, we aim to deliver consistent long-term
+                disciplined execution and institutional grade risk management, we aim to deliver consistent long term
                 performance.
             </p>
 
@@ -2160,7 +2264,7 @@
                 <p>
                     Focused investment strategies across gold, silver,
                     oil, energy, and agricultural markets designed for
-                    long-term value creation and portfolio diversification.
+                    long term value creation and portfolio diversification.
                 </p>
 
                 <p>
@@ -2268,21 +2372,21 @@
                 <span class="strategy-label-dark">STRATEGY 02</span>
 
                 <h2>
-                    MULTI-ASSET <br>
+                    MULTI ASSET <br>
                     SOLUTIONS
                 </h2>
 
                 <p>
                     Our flagship mandate. Fully bespoke portfolios spanning
-                    global equities, fixed income, real assets, and alternatives —
+                    global equities, fixed income, real assets, and alternatives
                     calibrated precisely to your risk mandate, liquidity requirements,
-                    and long-term objectives.
+                    and long term objectives.
                 </p>
 
                 <p>
                     The choice of discerning investors who demand institutional
                     discipline across every asset class, managed under one roof,
-                    by one accountable team with board-level seniority.
+                    by one accountable team with board level seniority.
                 </p>
 
                 <button>Learn More</button>
@@ -2317,7 +2421,7 @@
                     <h4>• Senior Portfolio Manager Assigned</h4>
 
                     <p>
-                        One named PM with board-level seniority holds full
+                        One named PM with board level seniority holds full
                         discretion and direct accountability over your mandate.
                     </p>
 
@@ -2373,6 +2477,7 @@
                         </span>
                         <span class="ci-text">
                             Global Headquarters<br>Dubai, United Arab Emirates
+                        </span>
                     </a>
 
                     <a class="contact-info-item" href="tel:+31686355651">
@@ -2383,7 +2488,7 @@
                                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.95 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.87 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
                         </span>
-                        <span class="ci-text">+31 686 355 651</span>
+                        <span class="ci-text">+31686355651</span>
                     </a>
                 </div>
             </div>
