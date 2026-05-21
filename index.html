@@ -89,8 +89,8 @@
         }
 
         .logo-img {
-            width: 130px;
-            height: 65px;
+            width: 180px;
+            height: 90px;
 
         }
 
@@ -683,12 +683,12 @@
             /* font-family: 'Playfair Display', serif !important; */
             /*   font-family: "Poppins", sans-serif;
  */
-            font-size: 125px;
-            font-weight: 100;
-            line-height: 1;
-            color: #606267e2;
-            margin-bottom: 1px;
-            letter-spacing: 5px;
+            font-size: 132px;
+            font-weight: 300;
+            /* ← ADD THIS */
+            line-height: 0.95;
+            letter-spacing: -1px;
+            color: #6d7075;
         }
 
         .stat-item .label {
@@ -973,15 +973,24 @@
             flex-wrap: wrap;
         }
 
-        .sol-card {
-            background: #fff;
-            width: 390px;
-            /* border: 1px solid #0A1634; */
-            padding: 42px 35px;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            transition: 0.3s ease;
-        }
+.sol-card {
+    background: #fff;
+    width: 390px;
+    padding: 42px 35px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    min-height: 500px;
+}
+
+
+.sol-card .btn-sm,
+.sol-card button {
+    margin-top: auto;
+}
 
         .sol-card:hover {
             box-shadow: 0 8px 32px rgba(0, 0, 0, .1);
@@ -1263,59 +1272,253 @@
             }
         }
 
-        /* ── WHY ── */
+        /* WHY */
+
+        /* ── WHY SECTION (fully responsive, mobile-first adjustments) ── */
         .why-section {
-            padding: 70px 0 90px;
+            padding: 60px 0 80px;
         }
 
+        /* Title styles with responsive scaling & left margin adaptation */
         .why-title {
-            font-size: 54px;
+            font-size: 42px;
             margin-bottom: 0px;
             font-weight: 800;
-            margin-left: 70px;
+            margin-left: 0px;
+            /* reset for mobile, then adjusted on larger */
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
 
         .why-sub {
-            font-size: 20px;
+            font-size: 18px;
             color: #131313ad;
-            margin-left: 70px;
-            margin-bottom: 70px;
+            margin-left: 0px;
+            margin-bottom: 50px;
             font-weight: 600;
+            line-height: 1.4;
+            max-width: 90%;
         }
 
+        /* 3-column grid with gap and responsive wrap */
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 48px;
             text-align: center;
         }
 
         .why-item {
-            max-width: 320px;
-            margin: auto;
+            max-width: 380px;
+            margin: 0 auto;
+            width: 100%;
         }
 
+        /* Icon block with border and responsive sizing */
         .why-icon {
-            width: 90px;
-            height: 90px;
+            width: 85px;
+            height: 85px;
             border: 5px solid #111;
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 24px;
+            transition: all 0.2s ease;
+        }
+
+        .why-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: #111;
+            stroke-width: 1.8;
         }
 
         .why-item h4 {
-            font-size: 28px;
-            margin-bottom: 0px;
+            font-size: 24px;
+            margin-bottom: 12px;
             font-weight: 800;
+            letter-spacing: -0.2px;
+            color: #000;
         }
 
         .why-item p {
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.5;
             color: #444;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* ========== TABLET (min-width: 640px) ========== */
+        @media (min-width: 640px) {
+            .why-title {
+                font-size: 48px;
+                margin-left: 20px;
+            }
+
+            .why-sub {
+                font-size: 19px;
+                margin-left: 20px;
+                margin-bottom: 60px;
+            }
+
+            .why-grid {
+                gap: 40px;
+            }
+
+            .why-item h4 {
+                font-size: 26px;
+            }
+
+            .why-item p {
+                font-size: 17px;
+                max-width: 300px;
+            }
+
+            .why-icon {
+                width: 88px;
+                height: 88px;
+            }
+
+            .why-icon svg {
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        /* ========== DESKTOP & LAPTOP (min-width: 900px) ========== */
+        @media (min-width: 900px) {
+            .why-section {
+                padding: 70px 0 90px;
+            }
+
+            .why-title {
+                font-size: 54px;
+                margin-left: 70px;
+            }
+
+            .why-sub {
+                font-size: 20px;
+                margin-left: 70px;
+                margin-bottom: 70px;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 50px;
+            }
+
+            .why-item {
+                max-width: 320px;
+            }
+
+            .why-icon {
+                width: 90px;
+                height: 90px;
+                border-radius: 10px;
+            }
+
+            .why-icon svg {
+                width: 42px;
+                height: 42px;
+            }
+
+            .why-item h4 {
+                /* font-size: 28px; */
+                margin-bottom: 0px;
+            }
+
+            .why-item p {
+                font-size: 18px;
+                max-width: 100%;
+            }
+        }
+
+        /* ========== EXTRA LARGE SCREENS (optional, keeps centering) ========== */
+        @media (min-width: 1280px) {
+            .why-title {
+                margin-left: 70px;
+            }
+
+            .why-sub {
+                margin-left: 70px;
+            }
+        }
+
+        /* ========== small mobile devices (below 480px) fine tune ========== */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .why-section {
+                padding: 48px 0 64px;
+            }
+
+            .why-title {
+                font-size: 36px;
+                word-break: break-word;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .why-sub {
+                font-size: 16px;
+                margin-bottom: 40px;
+                text-align: center;
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .why-icon {
+                width: 75px;
+                height: 75px;
+                border-width: 4px;
+            }
+
+            .why-icon svg {
+                width: 34px;
+                height: 34px;
+            }
+
+            .why-item h4 {
+                font-size: 22px;
+            }
+
+            .why-item p {
+                font-size: 16px;
+                padding: 0 8px;
+            }
+
+            .why-grid {
+                gap: 40px;
+            }
+        }
+
+        /* Optional: hover lift effect for modern interaction */
+        .why-item {
+            transition: transform 0.2s ease;
+        }
+
+        @media (hover: hover) {
+            .why-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .why-icon {
+                transition: border-color 0.2s, background 0.2s;
+            }
+
+            .why-item:hover .why-icon {
+                border-color: #333;
+                background-color: #fafaf9;
+            }
+        }
+
+        /* accessibility and better tap targets */
+        .why-item {
+            cursor: default;
         }
 
         /* ── FAQ ── */
@@ -1437,7 +1640,7 @@
         .contact-info-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
             text-decoration: none;
             color: var(--text-dark);
             font-size: 0.88rem;
@@ -1450,8 +1653,8 @@
         }
 
         .contact-info-item .ci-icon {
-            width: 36px;
-            height: 36px;
+            /* width: 36px; */
+            /* height: 36px; */
             border: 1.5px solid var(--border);
             border-radius: 8px;
             display: flex;
@@ -1466,7 +1669,7 @@
             display: flex;
             flex-direction: column;
             gap: 2px;
-            padding-top: 2px;
+            /* padding-top: 2px; */
         }
 
         /* Right – Form */
@@ -2082,7 +2285,7 @@
             }
 
             nav {
-                padding: 0 20px;
+                padding: 0px 10px 0px 0;
             }
 
             .nav-links {
@@ -2216,7 +2419,7 @@
                 </p>
 
                 <div class="about-btns">
-                    <button class="about-primary">Learn More</button>
+                    <button class="about-primary"><a class="a-tag" href="about.html">Learn More</a></button>
                     <button class="about-secondary"><a class="a-tag" href="contactUs.html">Contact Us</a></button>
                     <!-- <a href="contactUs.html" class="about-secondary">Contact Us</a> -->
 
@@ -2395,7 +2598,7 @@
                         Investment opportunities in Raw Metals, energy and agricultural markets
                     </p>
 
-                    <a href="#" class="btn-sm">Learn More</a>
+                    <a href="about.html" class="btn-sm">Learn More</a>
                 </div>
 
                 <!-- Card 2 -->
@@ -2420,7 +2623,7 @@
                     </p>
 
 
-                    <a href="#" class="btn-sm">Learn More</a>
+                    <a href="about.html" class="btn-sm">Learn More</a>
                 </div>
 
             </div>
@@ -2538,7 +2741,7 @@
                             </svg>
                         </span>
                         <span class="ci-text">
-                            Global Headquarters<br>Dubai, United Arab Emirates
+                            Global Headquarters <br> Dubai, United Arab Emirates
                         </span>
                     </a>
 
