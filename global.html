@@ -2623,7 +2623,11 @@
             </div>
         </div>
     </footer>
-
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+    </script>
     <script>
         const animateCounter = (counter) => {
             const target = parseFloat(counter.dataset.target);
