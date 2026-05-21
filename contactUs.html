@@ -321,8 +321,8 @@
         }
 
         .logo-img {
-            width: 180px;
-            height: 90px;
+            width: 200px;
+            height: 100px;
 
         }
 
@@ -871,7 +871,7 @@
                 <select>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
-                    <option value="fr">NL</option>
+                    <option value="fr">DU</option>
                 </select>
             </li>
         </ul>
@@ -1049,6 +1049,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.querySelector('.nav-logo').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                window.location.href = window.location.pathname;
+            }, 400);
+        });
+    </script>
 
     <script>
         function toggleMenu() {

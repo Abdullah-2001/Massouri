@@ -76,8 +76,8 @@
 
 
         .logo-img {
-            width: 180px;
-            height: 90px;
+            width: 200px;
+            height: 100px;
 
         }
 
@@ -183,7 +183,7 @@
         /* ── HERO ── */
         .hero {
             position: relative;
-            min-height: 620px;
+            min-height: 680px;
             display: flex;
             align-items: center;
             /* justify-content: flex-end; */
@@ -455,7 +455,7 @@
 
         .capital-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(62px, 6vw, 82px);
+            font-size: 60px;
             line-height: 0.95;
             color: #08153a;
             font-weight: 600;
@@ -466,7 +466,7 @@
         .capital-sub {
             max-width: 720px;
             font-family: 'DM Sans', sans-serif;
-            font-size: 22px;
+            font-size: 20px;
             line-height: 1.5;
             color: #1e2946;
             margin-bottom: 70px;
@@ -1106,7 +1106,7 @@
 
         .outcomes-heading h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(64px, 7vw, 108px);
+            font-size: 60px;
             line-height: 0.92;
             letter-spacing: -3px;
             color: #08153a;
@@ -1116,7 +1116,7 @@
 
         .outcomes-heading p {
             font-family: 'DM Sans', sans-serif;
-            font-size: 24px;
+            font-size: 20px;
             line-height: 1.4;
             color: #24304d;
             font-weight: 500;
@@ -1305,31 +1305,32 @@
 ========================= */
 
         .performance {
-            background: #04133b;
-            padding: 95px 90px 120px;
+            background: #ffffff;
+            padding: 120px 20px;
             overflow: hidden;
         }
 
         .performance-container {
-            max-width: 1380px;
+            /* max-width: 1380px; */
             margin: 0 auto;
         }
 
         .performance .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(72px, 7vw, 108px);
+            font-size: 60px;
             line-height: 0.92;
             font-weight: 600;
-            color: #f3f1ec;
+            color: #081a44;
             margin-bottom: 26px;
             letter-spacing: -3px;
         }
 
         .performance .section-sub {
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
+
             font-size: 18px;
             line-height: 1.55;
-            color: rgba(255, 255, 255, 0.82);
+            color: rgba(8, 26, 68, 0.75);
             max-width: 620px;
             margin-bottom: 72px;
             font-weight: 400;
@@ -1342,17 +1343,17 @@
         .perf-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            border: 2px solid rgba(255, 255, 255, 0.75);
+            border: 2px solid rgba(8, 26, 68, 0.75);
         }
 
         .perf-card {
-            padding: 66px 44px 34px;
+            padding: 60px 45px 30px;
             min-height: 430px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            border-right: 2px solid rgba(8, 26, 68, 0.75);
         }
 
         .perf-card:last-child {
@@ -1364,9 +1365,9 @@
 ========================= */
 
         .perf-card .icon-box {
-            width: 76px;
-            height: 76px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
+            width: 70px;
+            height: 70px;
+            border: 2px solid rgba(8, 26, 68, 0.75);
             border-radius: 0;
             display: flex;
             align-items: center;
@@ -1377,8 +1378,8 @@
         .perf-card .icon-box svg {
             width: 32px;
             height: 32px;
-            stroke: rgba(255, 255, 255, 0.92);
-            color: rgba(255, 255, 255, 0.92);
+            stroke: rgba(8, 26, 68, 0.75);
+            color: rgba(8, 26, 68, 0.75);
         }
 
         /* =========================
@@ -1386,12 +1387,12 @@
 ========================= */
 
         .perf-card .metric {
-            font-family: 'DM Sans', sans-serif;
-            font-size: clamp(72px, 6vw, 92px);
-            font-weight: 800;
+            font-family: "Poppins", sans-serif;
+            font-size: 55px;
+            font-weight: 600;
             line-height: 0.95;
             letter-spacing: -4px;
-            color: #c8c5bf;
+            color: #081a44;
             margin-bottom: 18px;
         }
 
@@ -1400,12 +1401,13 @@
 ========================= */
 
         .perf-card .metric-label {
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
+
             font-size: 22px;
             line-height: 1.1;
             font-weight: 700;
             text-transform: uppercase;
-            color: #f4f4f4;
+            color: #081a44;
             max-width: 280px;
             margin-bottom: auto;
         }
@@ -1416,11 +1418,12 @@
 
         .perf-card .metric-desc {
             margin-top: 80px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
+
             font-size: 15px;
             line-height: 1.4;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(8, 26, 68, 0.75);
             letter-spacing: 0;
             font-weight: 500;
         }
@@ -1441,7 +1444,7 @@
 
             .perf-card {
                 border-right: none;
-                border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+                border-bottom: 2px solid rgba(8, 26, 68, 0.75);
                 min-height: auto;
                 padding: 50px 34px;
             }
@@ -1528,7 +1531,7 @@
         .why-icon {
             width: 90px;
             height: 90px;
-            border: 5px solid #111;
+            border: 5px solid #081a44;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -2245,7 +2248,7 @@
                 <select>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
-                    <option value="fr">NL</option>
+                    <option value="fr">DU</option>
                 </select>
             </li>
         </ul>
@@ -2822,6 +2825,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.querySelector('.nav-logo').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                window.location.href = window.location.pathname;
+            }, 400);
+        });
+    </script>
 
     <script>
         const animateCounter = (counter) => {

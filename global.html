@@ -75,8 +75,8 @@
         }
 
         .logo-img {
-            width: 180px;
-            height: 90px;
+            width: 200px;
+            height: 100px;
 
         }
 
@@ -243,6 +243,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: .3s;
+            text-decoration: none;
         }
 
         .hero-btn:hover {
@@ -839,31 +840,32 @@
 ========================= */
 
         .performance {
-            background: #04133b;
-            padding: 95px 90px 120px;
+            background: #ebedf4;
+            padding: 120px 20px;
             overflow: hidden;
         }
 
         .performance-container {
-            max-width: 1380px;
+            /* max-width: 1380px; */
             margin: 0 auto;
         }
 
         .performance .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(72px, 7vw, 108px);
+            font-size: clamp(72px, 7vw, 64px);
             line-height: 0.92;
             font-weight: 600;
-            color: #f3f1ec;
+            color: #04133b;
             margin-bottom: 26px;
             letter-spacing: -3px;
         }
 
         .performance .section-sub {
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
+
             font-size: 18px;
             line-height: 1.55;
-            color: rgba(255, 255, 255, 0.82);
+            color: rgba(4, 19, 59, 0.75);
             max-width: 620px;
             margin-bottom: 72px;
             font-weight: 400;
@@ -876,7 +878,7 @@
         .perf-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            border: 2px solid rgba(255, 255, 255, 0.75);
+            border: 2px solid rgba(4, 19, 59, 0.75);
         }
 
         .perf-card {
@@ -886,7 +888,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            border-right: 2px solid rgba(4, 19, 59, 0.75);
         }
 
         .perf-card:last-child {
@@ -900,7 +902,7 @@
         .perf-card .icon-box {
             width: 76px;
             height: 76px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
+            border: 2px solid rgba(4, 19, 59, 0.75);
             border-radius: 0;
             display: flex;
             align-items: center;
@@ -911,8 +913,8 @@
         .perf-card .icon-box svg {
             width: 32px;
             height: 32px;
-            stroke: rgba(255, 255, 255, 0.92);
-            color: rgba(255, 255, 255, 0.92);
+            stroke: rgba(4, 19, 59, 0.75);
+            color: rgba(4, 19, 59, 0.75);
         }
 
         /* =========================
@@ -920,12 +922,12 @@
 ========================= */
 
         .perf-card .metric {
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
             font-size: clamp(72px, 6vw, 92px);
-            font-weight: 800;
+            font-weight: 600;
             line-height: 0.95;
             letter-spacing: -4px;
-            color: #c8c5bf;
+            color: #04133b;
             margin-bottom: 18px;
         }
 
@@ -934,12 +936,13 @@
 ========================= */
 
         .perf-card .metric-label {
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
+
             font-size: 22px;
             line-height: 1.1;
             font-weight: 700;
             text-transform: uppercase;
-            color: #f4f4f4;
+            color: #04133b;
             max-width: 280px;
             margin-bottom: auto;
         }
@@ -950,11 +953,12 @@
 
         .perf-card .metric-desc {
             margin-top: 80px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: "Poppins", sans-serif;
+
             font-size: 15px;
             line-height: 1.4;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(4, 19, 59, 0.75);
             letter-spacing: 0;
             font-weight: 500;
         }
@@ -2203,7 +2207,7 @@
                 <select>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
-                    <option value="fr">NL</option>
+                    <option value="fr">DU</option>
                 </select>
             </li>
         </ul>
@@ -2225,7 +2229,9 @@
                 performance.
             </p>
 
-            <button class="hero-btn">Contact Us</button>
+            <!-- <button class="hero-btn">Contact Us</button> -->
+            <a href="contactUs.html" class="hero-btn">CONTACT US</a>
+
         </div>
     </section>
 
@@ -2633,6 +2639,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.querySelector('.nav-logo').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                window.location.href = window.location.pathname;
+            }, 400);
+        });
+    </script>
     <script>
         function toggleMenu() {
             document.getElementById("navLinks").classList.toggle("active");

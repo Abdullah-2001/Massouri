@@ -89,8 +89,8 @@
         }
 
         .logo-img {
-            width: 180px;
-            height: 90px;
+            width: 200px;
+            height: 100px;
 
         }
 
@@ -973,24 +973,24 @@
             flex-wrap: wrap;
         }
 
-.sol-card {
-    background: #fff;
-    width: 390px;
-    padding: 42px 35px;
-    border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    min-height: 500px;
-}
+        .sol-card {
+            background: #fff;
+            width: 390px;
+            padding: 42px 35px;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            min-height: 500px;
+        }
 
 
-.sol-card .btn-sm,
-.sol-card button {
-    margin-top: auto;
-}
+        .sol-card .btn-sm,
+        .sol-card button {
+            margin-top: auto;
+        }
 
         .sol-card:hover {
             box-shadow: 0 8px 32px rgba(0, 0, 0, .1);
@@ -1079,7 +1079,7 @@
 ========================= */
 
         .performance {
-            background: #04133b;
+            background: #ffffff;
             padding: 120px 20px;
             overflow: hidden;
         }
@@ -1091,10 +1091,10 @@
 
         .performance .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(72px, 7vw, 64px);
+            font-size: 60px;
             line-height: 0.92;
             font-weight: 600;
-            color: #f3f1ec;
+            color: #081a44;
             margin-bottom: 26px;
             letter-spacing: -3px;
         }
@@ -1104,7 +1104,7 @@
 
             font-size: 18px;
             line-height: 1.55;
-            color: rgba(255, 255, 255, 0.82);
+            color: rgba(8, 26, 68, 0.75);
             max-width: 620px;
             margin-bottom: 72px;
             font-weight: 400;
@@ -1117,17 +1117,17 @@
         .perf-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            border: 2px solid rgba(255, 255, 255, 0.75);
+            border: 2px solid rgba(8, 26, 68, 0.75);
         }
 
         .perf-card {
-            padding: 66px 44px 34px;
+            padding: 60px 45px 30px;
             min-height: 430px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-right: 2px solid rgba(255, 255, 255, 0.75);
+            border-right: 2px solid rgba(8, 26, 68, 0.75);
         }
 
         .perf-card:last-child {
@@ -1139,9 +1139,9 @@
 ========================= */
 
         .perf-card .icon-box {
-            width: 76px;
-            height: 76px;
-            border: 2px solid rgba(255, 255, 255, 0.85);
+            width: 70px;
+            height: 70px;
+            border: 2px solid rgba(8, 26, 68, 0.75);
             border-radius: 0;
             display: flex;
             align-items: center;
@@ -1152,8 +1152,8 @@
         .perf-card .icon-box svg {
             width: 32px;
             height: 32px;
-            stroke: rgba(255, 255, 255, 0.92);
-            color: rgba(255, 255, 255, 0.92);
+            stroke: rgba(8, 26, 68, 0.75);
+            color: rgba(8, 26, 68, 0.75);
         }
 
         /* =========================
@@ -1162,11 +1162,11 @@
 
         .perf-card .metric {
             font-family: "Poppins", sans-serif;
-            font-size: clamp(72px, 6vw, 92px);
+            font-size: 55px;
             font-weight: 600;
             line-height: 0.95;
             letter-spacing: -4px;
-            color: #c8c5bf;
+            color: #081a44;
             margin-bottom: 18px;
         }
 
@@ -1181,7 +1181,7 @@
             line-height: 1.1;
             font-weight: 700;
             text-transform: uppercase;
-            color: #f4f4f4;
+            color: #081a44;
             max-width: 280px;
             margin-bottom: auto;
         }
@@ -1197,7 +1197,7 @@
             font-size: 15px;
             line-height: 1.4;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(8, 26, 68, 0.75);
             letter-spacing: 0;
             font-weight: 500;
         }
@@ -1218,7 +1218,7 @@
 
             .perf-card {
                 border-right: none;
-                border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+                border-bottom: 2px solid rgba(8, 26, 68, 0.75);
                 min-height: auto;
                 padding: 50px 34px;
             }
@@ -2336,7 +2336,59 @@
         .unified-border {
             animation: border-pulse 2.6s ease-in-out infinite;
         }
+
+        .hotspot-ring {
+            fill: none;
+            stroke: white;
+            stroke-width: 1.5;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        .hotspot-ring-2 {
+            fill: none;
+            stroke: white;
+            stroke-width: 1;
+            opacity: 0.5;
+            animation: pulse-ring 2s ease-out infinite 0.7s;
+        }
+
+        .hotspot-core {
+            fill: white;
+        }
+
+        .hotspot-glow {
+            fill: white;
+            opacity: 0.25;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                r: 5px;
+                opacity: 0.9;
+            }
+
+            100% {
+                r: 18px;
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                r: 10px;
+                opacity: 0.3;
+            }
+
+            50% {
+                r: 14px;
+                opacity: 0.15;
+            }
+        }
     </style>
+
 </head>
 
 <body>
@@ -2362,7 +2414,7 @@
                 <select>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
-                    <option value="fr">NL</option>
+                    <option value="fr">DU</option>
                 </select>
             </li>
         </ul>
@@ -2564,6 +2616,8 @@
                     <g id="countries-layer"></g>
                     <g id="border-layer"></g>
                     <g id="labels-layer"></g>
+                    <g id="hotspot-layer"></g>
+
                 </svg>
             </div>
 
@@ -2880,7 +2934,15 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script>
+        document.querySelector('.nav-logo').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                window.location.href = window.location.pathname;
+            }, 400);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
     <script>
         function toggleMenu() {
@@ -2931,19 +2993,14 @@
             "DEU", "NLD", "FRA", "GBR", "ESP", "ITA", "POL", "BEL", "AUT", "CHE",
             "CZE", "HUN", "SVK", "SVN", "HRV", "BGR", "ROU", "SRB", "DNK", "SWE",
             "NOR", "FIN", "PRT", "GRC", "UKR", "BLR", "LTU", "LVA", "EST", "MDA",
-            "ALB", "MKD", "MNE", "BIH", "LUX", "IRL"
+            "ALB", "MKD", "MNE", "BIH", "LUX", "IRL", "ISL"
         ]);
 
-        // Countries with their own individual border
-        const SEPARATE = new Set(["USA", "JPN", "NZL"]);
-
-        const ALL_HIGHLIGHTS = new Set([...EUROPE, ...SEPARATE]);
-
-        const projection = d3.geoNaturalEarth1().scale(153).translate([480, 250]);
-        const path = d3.geoPath().projection(projection);
-
-        const layer = d3.select("#countries-layer");
-        const bLayer = d3.select("#border-layer");
+        // Blue fill + white border
+        const HIGHLIGHTED = new Set([...EUROPE, "USA", "JPN", "NZL"]);
+        // White border only
+        const BORDER_ONLY = new Set(["AUS", "CAN"]);
+        const ALL_SPECIAL = new Set([...HIGHLIGHTED, ...BORDER_ONLY]);
 
         const numToIso = {
             840: "USA", 826: "GBR", 276: "DEU", 250: "FRA", 392: "JPN", 554: "NZL", 36: "AUS", 124: "CAN",
@@ -2960,76 +3017,121 @@
             496: "MNG", 458: "MYS", 702: "SGP", 360: "IDN", 608: "PHL", 178: "COG", 180: "COD", 516: "NAM",
             72: "BWA", 454: "MWI", 646: "RWA", 108: "BDI", 686: "SEN", 242: "FJI", 598: "PNG", 784: "ARE",
             703: "SVK", 705: "SVN", 191: "HRV", 688: "SRB", 807: "MKD", 499: "MNE", 70: "BIH", 440: "LTU",
-            428: "LVA", 233: "EST", 498: "MDA", 8: "ALB", 442: "LUX", 372: "IRL",
+            428: "LVA", 233: "EST", 498: "MDA", 8: "ALB", 442: "LUX", 372: "IRL", 352: "ISL",
         };
 
-        // Lighter navy for highlighted countries — clearly distinct from background
-        const FILL_HIGHLIGHT = "#1e3a6e";  // medium navy blue
-        const FILL_OTHER = "#0f2144";  // dark navy (background tone)
+        const projection = d3.geoNaturalEarth1().scale(153).translate([480, 250]);
+        const path = d3.geoPath().projection(projection);
+
+        const layer = d3.select("#countries-layer");
+        const bLayer = d3.select("#border-layer");
+        const hLayer = d3.select("#hotspot-layer");
+
+        const FILL_HIGHLIGHT = "#1e3a6e";
+        const FILL_OTHER = "#0f2144";
         const STROKE_OTHER = "#1a3260";
+
+        // Manual white-border-only spots (drawn as custom circles/shapes since they're territories/islands not in the dataset)
+        // [lon, lat, label, radiusApprox]
+        const MANUAL_BORDER_CIRCLES = [
+            { lon: -157.5, lat: 21.0, label: "Hawaii", r: 14 },  // Hawaii
+            // { lon: -89.5, lat: 0.5, label: "Galápagos", r: 13 },  // Galápagos Islands
+        ];
+
+        // Hotspot dots
+        const HOTSPOTS = [
+            { lon: -98, lat: 39, label: "USA" },
+            { lon: 15, lat: 52, label: "Europe" },
+            { lon: 174, lat: -41, label: "New Zealand" },
+            { lon: 134, lat: -25, label: "Australia" },
+            { lon: -96, lat: 60, label: "Canada" },
+            { lon: 138, lat: 37, label: "Japan" },
+            { lon: -18.5, lat: 65, label: "Iceland" },
+            { lon: -157.5, lat: 21, label: "Hawaii" },
+            // { lon: -89.5, lat: 0.5, label: "Galápagos" },
+        ];
+
+        function drawWhiteBorder(pd) {
+            bLayer.append("path").attr("d", pd).attr("fill", "none")
+                .attr("stroke", "rgba(255,255,255,0.35)").attr("stroke-width", 6)
+                .attr("filter", "url(#white-glow)");
+            bLayer.append("path").attr("d", pd).attr("fill", "none")
+                .attr("stroke", "rgba(255,255,255,0.95)").attr("stroke-width", 1.6)
+                .attr("stroke-linejoin", "round");
+        }
+
+        function drawCircleBorder(x, y, r) {
+            // glow
+            bLayer.append("circle").attr("cx", x).attr("cy", y).attr("r", r)
+                .attr("fill", "none").attr("stroke", "rgba(255,255,255,0.35)")
+                .attr("stroke-width", 6).attr("filter", "url(#white-glow)");
+            // crisp
+            bLayer.append("circle").attr("cx", x).attr("cy", y).attr("r", r)
+                .attr("fill", "none").attr("stroke", "rgba(255,255,255,0.95)")
+                .attr("stroke-width", 1.6);
+        }
+
+        function drawHotspot(x, y) {
+            const g = hLayer.append("g").attr("transform", `translate(${x},${y})`);
+            g.append("circle").attr("r", 10).attr("class", "hotspot-glow");
+            g.append("circle").attr("r", 5).attr("class", "hotspot-ring");
+            g.append("circle").attr("r", 5).attr("class", "hotspot-ring-2");
+            g.append("circle").attr("r", 4).attr("class", "hotspot-core");
+            g.append("circle").attr("r", 4).attr("fill", "none")
+                .attr("stroke", "rgba(255,255,255,0.6)").attr("stroke-width", "1");
+        }
 
         fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
             .then(r => r.json())
             .then(world => {
                 const countries = topojson.feature(world, world.objects.countries);
 
-                // Base fills
                 layer.selectAll("path")
                     .data(countries.features)
                     .join("path")
                     .attr("d", path)
                     .attr("fill", d => {
                         const iso = numToIso[+d.id] || "";
-                        return ALL_HIGHLIGHTS.has(iso) ? FILL_HIGHLIGHT : FILL_OTHER;
+                        return HIGHLIGHTED.has(iso) ? FILL_HIGHLIGHT : FILL_OTHER;
                     })
                     .attr("stroke", d => {
                         const iso = numToIso[+d.id] || "";
-                        return ALL_HIGHLIGHTS.has(iso) ? "none" : STROKE_OTHER;
+                        return ALL_SPECIAL.has(iso) ? "none" : STROKE_OTHER;
                     })
                     .attr("stroke-width", 0.4);
 
-                // Helper: draw white border for a given path string
-                function drawWhiteBorder(pd) {
-                    // soft glow
-                    bLayer.append("path")
-                        .attr("d", pd)
-                        .attr("fill", "none")
-                        .attr("stroke", "rgba(255,255,255,0.35)")
-                        .attr("stroke-width", 6)
-                        .attr("filter", "url(#white-glow)")
-                        .attr("class", "unified-border");
-                    // crisp white line
-                    bLayer.append("path")
-                        .attr("d", pd)
-                        .attr("fill", "none")
-                        .attr("stroke", "rgba(255,255,255,0.95)")
-                        .attr("stroke-width", 1.6)
-                        .attr("stroke-linejoin", "round")
-                        .attr("class", "unified-border");
-                }
-
-                // --- Europe: single unified outer border ---
+                // Europe unified outer border (now includes Iceland)
                 const europeIds = new Set(
-                    countries.features
-                        .filter(d => EUROPE.has(numToIso[+d.id] || ""))
-                        .map(d => +d.id)
+                    countries.features.filter(d => EUROPE.has(numToIso[+d.id] || "")).map(d => +d.id)
                 );
-
-                const unifiedMesh = topojson.mesh(
-                    world, world.objects.countries,
-                    (a, b) => {
-                        const aIn = europeIds.has(+a.id);
-                        const bIn = europeIds.has(+b.id);
-                        return (aIn && !bIn) || (!aIn && bIn) || (aIn && a === b);
-                    }
-                );
+                const unifiedMesh = topojson.mesh(world, world.objects.countries, (a, b) => {
+                    const aIn = europeIds.has(+a.id);
+                    const bIn = europeIds.has(+b.id);
+                    return (aIn && !bIn) || (!aIn && bIn) || (aIn && a === b);
+                });
                 drawWhiteBorder(path(unifiedMesh));
 
-                // --- Separate countries: individual borders ---
-                SEPARATE.forEach(targetIso => {
+                // Individual country borders
+                ["USA", "JPN", "NZL", "AUS", "CAN"].forEach(targetIso => {
                     const feat = countries.features.find(d => numToIso[+d.id] === targetIso);
                     if (!feat) return;
                     drawWhiteBorder(path(feat));
+                });
+
+                // Iceland separate border (it's in EUROPE but geographically separate)
+                const icelandFeat = countries.features.find(d => numToIso[+d.id] === "ISL");
+                if (icelandFeat) drawWhiteBorder(path(icelandFeat));
+
+                // Manual circle borders for island groups (Hawaii, Galápagos)
+                MANUAL_BORDER_CIRCLES.forEach(({ lon, lat, r }) => {
+                    const [x, y] = projection([lon, lat]);
+                    drawCircleBorder(x, y, r);
+                });
+
+                // Hotspots
+                HOTSPOTS.forEach(({ lon, lat }) => {
+                    const [x, y] = projection([lon, lat]);
+                    drawHotspot(x, y);
                 });
             });
     </script>
