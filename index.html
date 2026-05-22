@@ -2990,7 +2990,7 @@
         document.querySelectorAll(".stats").forEach(section => observer.observe(section));
         // Europe group — unified single border
         const EUROPE = new Set([
-            "DEU", "NLD", "FRA", "GBR", "ESP", "ITA", "POL", "BEL", "AUT", "CHE",
+            "DEU", "NLD", "GBR", "ESP", "ITA", "POL", "BEL", "AUT", "CHE",
             "CZE", "HUN", "SVK", "SVN", "HRV", "BGR", "ROU", "SRB", "DNK", "SWE",
             "NOR", "FIN", "PRT", "GRC", "UKR", "BLR", "LTU", "LVA", "EST", "MDA",
             "ALB", "MKD", "MNE", "BIH", "LUX", "IRL", "ISL"
@@ -3118,11 +3118,7 @@
                 const icelandFeat = countries.features.find(d => numToIso[+d.id] === "ISL");
                 if (icelandFeat) drawWhiteBorder(path(icelandFeat));
 
-                // Manual circle borders for island groups (Hawaii, Galápagos)
-                MANUAL_BORDER_CIRCLES.forEach(({ lon, lat, r }) => {
-                    const [x, y] = projection([lon, lat]);
-                    drawCircleBorder(x, y, r);
-                });
+                
 
                 // Hotspots
                 HOTSPOTS.forEach(({ lon, lat }) => {
