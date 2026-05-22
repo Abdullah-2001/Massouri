@@ -224,7 +224,7 @@
             bottom: 0;
             width: 42%;
             background: linear-gradient(to right, var(--navy), transparent 20%),
-                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80') center/cover no-repeat;
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80') center/cover no-repeatZ;
             opacity: .45;
         }
 
@@ -1079,7 +1079,7 @@
 ========================= */
 
         .performance {
-            background: #ffffff;
+            background: #0d1b35;
             padding: 120px 20px;
             overflow: hidden;
         }
@@ -1094,7 +1094,7 @@
             font-size: 60px;
             line-height: 0.92;
             font-weight: 600;
-            color: #081a44;
+            color: #ffffff;
             margin-bottom: 26px;
             letter-spacing: -3px;
         }
@@ -1104,7 +1104,7 @@
 
             font-size: 18px;
             line-height: 1.55;
-            color: rgba(8, 26, 68, 0.75);
+            color: #ffffff;
             max-width: 620px;
             margin-bottom: 72px;
             font-weight: 400;
@@ -1117,7 +1117,7 @@
         .perf-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            border: 2px solid rgba(8, 26, 68, 0.75);
+            border: 2px solid #ffffff;
         }
 
         .perf-card {
@@ -1127,7 +1127,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-right: 2px solid rgba(8, 26, 68, 0.75);
+            border-right: 2px solid #ffffff;
         }
 
         .perf-card:last-child {
@@ -1141,7 +1141,7 @@
         .perf-card .icon-box {
             width: 70px;
             height: 70px;
-            border: 2px solid rgba(8, 26, 68, 0.75);
+            border: 2px solid #ffffff;
             border-radius: 0;
             display: flex;
             align-items: center;
@@ -1152,8 +1152,8 @@
         .perf-card .icon-box svg {
             width: 32px;
             height: 32px;
-            stroke: rgba(8, 26, 68, 0.75);
-            color: rgba(8, 26, 68, 0.75);
+            stroke: #ffffff;
+            color: #ffffff;
         }
 
         /* =========================
@@ -1162,11 +1162,11 @@
 
         .perf-card .metric {
             font-family: "Poppins", sans-serif;
-            font-size: 55px;
+            font-size: 42px;
             font-weight: 600;
             line-height: 0.95;
             letter-spacing: -4px;
-            color: #081a44;
+            color: #ffffff;
             margin-bottom: 18px;
         }
 
@@ -1181,7 +1181,7 @@
             line-height: 1.1;
             font-weight: 700;
             text-transform: uppercase;
-            color: #081a44;
+            color: #ffffff;
             max-width: 280px;
             margin-bottom: auto;
         }
@@ -1197,7 +1197,7 @@
             font-size: 15px;
             line-height: 1.4;
             text-transform: uppercase;
-            color: rgba(8, 26, 68, 0.75);
+            color: #ffffff;
             letter-spacing: 0;
             font-weight: 500;
         }
@@ -2099,12 +2099,12 @@
 
         .country {
             fill: #1a2d55;
-            stroke: #2e4a82;
-            stroke-width: 0.4;
+            stroke: white;
+            stroke-width: 0.1;
         }
 
         .border-blink {
-            animation: borderBlink 1.4s ease-in-out infinite;
+            animation: borderBlink 5s ease-in-out infinite;
         }
 
         @keyframes borderBlink {
@@ -2325,7 +2325,7 @@
 
             0%,
             100% {
-                stroke-opacity: 1;
+                stroke-opacity: 1.5;
             }
 
             50% {
@@ -2339,9 +2339,9 @@
 
         .hotspot-ring {
             fill: none;
-            stroke: white;
-            stroke-width: 1.5;
-            animation: pulse-ring 2s ease-out infinite;
+            stroke: #9fbbef;
+            stroke-width: 1;
+            animation: pulse-ring 2.5s ease-out infinite;
         }
 
         .hotspot-ring-2 {
@@ -2353,11 +2353,11 @@
         }
 
         .hotspot-core {
-            fill: white;
+            fill: #6e95de;
         }
 
         .hotspot-glow {
-            fill: white;
+            fill: #9fbbef;
             opacity: 0.25;
             animation: pulse-glow 2s ease-in-out infinite;
         }
@@ -3027,14 +3027,13 @@
         const bLayer = d3.select("#border-layer");
         const hLayer = d3.select("#hotspot-layer");
 
-        const FILL_HIGHLIGHT = "#1e3a6e";
+        const FILL_HIGHLIGHT = "#7488AE";
         const FILL_OTHER = "#0f2144";
         const STROKE_OTHER = "#1a3260";
 
         // Manual white-border-only spots (drawn as custom circles/shapes since they're territories/islands not in the dataset)
         // [lon, lat, label, radiusApprox]
         const MANUAL_BORDER_CIRCLES = [
-            { lon: -157.5, lat: 21.0, label: "Hawaii", r: 14 },  // Hawaii
             // { lon: -89.5, lat: 0.5, label: "Galápagos", r: 13 },  // Galápagos Islands
         ];
 
@@ -3043,20 +3042,17 @@
             { lon: -98, lat: 39, label: "USA" },
             { lon: 15, lat: 52, label: "Europe" },
             { lon: 174, lat: -41, label: "New Zealand" },
-            { lon: 134, lat: -25, label: "Australia" },
-            { lon: -96, lat: 60, label: "Canada" },
             { lon: 138, lat: 37, label: "Japan" },
             { lon: -18.5, lat: 65, label: "Iceland" },
-            { lon: -157.5, lat: 21, label: "Hawaii" },
             // { lon: -89.5, lat: 0.5, label: "Galápagos" },
         ];
 
         function drawWhiteBorder(pd) {
             bLayer.append("path").attr("d", pd).attr("fill", "none")
-                .attr("stroke", "rgba(255,255,255,0.35)").attr("stroke-width", 6)
+                //.attr("stroke", "rgba(255,255,255,0.35)").attr("stroke-width", 6)
                 .attr("filter", "url(#white-glow)");
             bLayer.append("path").attr("d", pd).attr("fill", "none")
-                .attr("stroke", "rgba(255,255,255,0.95)").attr("stroke-width", 1.6)
+                //.attr("stroke", "rgba(255,255,255,0.95)").attr("stroke-width", 1.6)
                 .attr("stroke-linejoin", "round");
         }
 
