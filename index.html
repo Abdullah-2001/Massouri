@@ -389,7 +389,7 @@
             font-weight: 600;
             color: #0A1634;
             margin-bottom: 20px;
-            letter-spacing:;
+            letter-spacing: -1px;
         }
 
         .about-text p {
@@ -532,6 +532,10 @@
 
         /* ── Tablet Portrait 600px–767px ────────────────────────── */
         @media (max-width: 767px) {
+            .hero {
+                background-position: right !important;
+            }
+
             .about-wrapper {
                 padding: 60px 20px;
             }
@@ -3116,7 +3120,7 @@
                 const icelandFeat = countries.features.find(d => numToIso[+d.id] === "ISL");
                 if (icelandFeat) drawWhiteBorder(path(icelandFeat));
 
-                
+
 
                 // Hotspots
                 HOTSPOTS.forEach(({ lon, lat }) => {
